@@ -90,54 +90,53 @@ body {
 /*--- !ROOT ---*/
 
 :root {
-  --body: #020c1e !important;
-  --primary: #2b176a;
-  --p-hover: #6e5da4;
-  --p-100: #d0c7ea;
-  --p-200: #b6abd7;
-  --p-300: #8f81bd;
-  --p-400: #6e5da4;
-  --p-500: #4c388b;
-  --p-600: #241358;
-  --p-700: #1d0f47;
-  --p-800: #160c35;
-  --p-900: #0e0823;
-  --p-dark: #090515;
+  --body: #12141A !important;
+  --primary: #A08667;
+  --p-hover: #857056;
+  --p-100: #ECE7E0;
+  --p-200: #DFD7CC;
+  --p-300: #CFC2B3;
+  --p-400: #C0AE9A;
+  --p-500: #B09A80;
+  --p-600: #857056;
+  --p-700: #6B5945;
+  --p-800: #504333;
+  --p-900: #352D22;
+  --p-dark: #201B15;
 
-  --secondary: #dc9d38;
-  --s-hover: #b7832f;
-  --s-100: #f8ebd7;
-  --s-200: #f3debd;
-  --s-300: #edce9b;
-  --s-400: #e8be7a;
-  --s-500: #e2ad59;
-  --s-600: #b7832f;
-  --s-700: #936925;
-  --s-800: #6e4f1c;
-  --s-900: #493413;
-  --s-dark: #2c1f0b;
+  --secondary: #2F3D4E;
+  --s-hover: #273341;
+  --s-100: #BED5F1;
+  --s-200: #A8C1E0;
+  --s-300: #89A2C1;
+  --s-400: #6982A0;
+  --s-500: #4F6887;
+  --s-600: #273341;
+  --s-700: #1F2934;
+  --s-800: #171E27;
+  --s-900: #10141A;
+  --s-dark: #090C10;
 
-  --text-p-light: var(--p-200);
-  --text-p-lighter: var(--p-400);
-  --text-s-light: var(--s-400);
-  --text-s-lighter: var(--s-200);
+  --text-p-light: var(--p-400);
+  --text-p-lighter: var(--p-200);
+  --text-s-light: var(--s-300);
+  --text-s-lighter: var(--s-100);
 
   --gray: #63656a;
-  --bg: #faf8ff;
-  --bg-p-light: #dcd6f0;
-  --bg-p-lighter: #f0edfa;
-  --bg-s-light: #f8eedd;
-  --bg-s-lighter: #fef8ec;
+  --bg: #FCF6F0;
+  --bg-p-light: var(--p-300);
+  --bg-p-lighter: var(--p-200);
+  --bg-s-light: var(--s-300);
+  --bg-s-lighter: #var(--s-100);
 
   --border-p: var(--p-300);
-  --border-p-light: var(--p-100);
+  --border-p-light: var(--p-200);
   --border-s: var(--s-300);
   --border-s-light: var(--s-200);
 
-  --header: 'Inter', sans-serif;
-  --txt: 'Inter', sans-serif;
-  --btns-font: 'Inter', sans-serif;
-  --trajan: 'trajan-pro-3', serif;
+  --header: "Noto Serif", serif
+  --txt: "Lato", sans-serif;
+  --btns-font: "Lato", sans-serif;
 
   --smt: 104px;
   --spt: 104px;
