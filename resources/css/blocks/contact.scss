@@ -1,0 +1,31 @@
+.contact {
+  .__data {
+	font-size:18px;
+  }
+  .__phone {
+    display: flex;
+  }
+
+  .__phone::before {
+    content: url('http://mk.local/wp-content/uploads/2025/08/phone-1.svg');
+    margin-right: 16px;
+    position: relative;
+    top: 4px;
+	max-width: 40px;
+  }
+
+  .__mail {
+    display: flex;
+  }
+
+  .__mail::before {
+    content: url('http://mk.local/wp-content/uploads/2025/08/mail-1.svg');
+    margin-right: 16px;
+    position: relative;
+    top: 4px;
+	max-width: 40px;
+  }
+
+  .__address {
+  }
+}
