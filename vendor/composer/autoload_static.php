@@ -372,10 +372,10 @@ class ComposerStaticInit98f3e1b0ed14492de67a0e6fcacef8b0
         ),
         'Illuminate\\Support\\' => 
         array (
-            0 => __DIR__ . '/..' . '/illuminate/collections',
-            1 => __DIR__ . '/..' . '/illuminate/conditionable',
-            2 => __DIR__ . '/..' . '/illuminate/macroable',
-            3 => __DIR__ . '/..' . '/illuminate/support',
+            0 => __DIR__ . '/..' . '/illuminate/support',
+            1 => __DIR__ . '/..' . '/illuminate/collections',
+            2 => __DIR__ . '/..' . '/illuminate/conditionable',
+            3 => __DIR__ . '/..' . '/illuminate/macroable',
         ),
         'Illuminate\\Session\\' => 
         array (
@@ -557,6 +557,7 @@ class ComposerStaticInit98f3e1b0ed14492de67a0e6fcacef8b0
         'App\\Blocks\\OfferCardsBlock' => __DIR__ . '/../..' . '/app/Blocks/OfferCardsBlock.php',
         'App\\Blocks\\Opinion' => __DIR__ . '/../..' . '/app/Blocks/Opinion.php',
         'App\\Blocks\\Overlap' => __DIR__ . '/../..' . '/app/Blocks/Overlap.php',
+        'App\\Blocks\\Path' => __DIR__ . '/../..' . '/app/Blocks/Path.php',
         'App\\Blocks\\Proces' => __DIR__ . '/../..' . '/app/Blocks/Proces.php',
         'App\\Blocks\\Reviews' => __DIR__ . '/../..' . '/app/Blocks/Reviews.php',
         'App\\Blocks\\Slides' => __DIR__ . '/../..' . '/app/Blocks/Slides.php',

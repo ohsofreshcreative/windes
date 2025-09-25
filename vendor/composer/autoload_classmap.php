@@ -38,6 +38,7 @@ return array(
     'App\\Blocks\\OfferCardsBlock' => $baseDir . '/app/Blocks/OfferCardsBlock.php',
     'App\\Blocks\\Opinion' => $baseDir . '/app/Blocks/Opinion.php',
     'App\\Blocks\\Overlap' => $baseDir . '/app/Blocks/Overlap.php',
+    'App\\Blocks\\Path' => $baseDir . '/app/Blocks/Path.php',
     'App\\Blocks\\Proces' => $baseDir . '/app/Blocks/Proces.php',
     'App\\Blocks\\Reviews' => $baseDir . '/app/Blocks/Reviews.php',
     'App\\Blocks\\Slides' => $baseDir . '/app/Blocks/Slides.php',
