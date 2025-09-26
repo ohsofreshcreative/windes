@@ -19,7 +19,7 @@ $backgroundImage = $imageUrl
         <div class="__content relative z-10">
 
             @if (!empty($g_herooffer['title']))
-                <h1 data-gsap-element="header" class="trajan text-white text-center">{{ $g_herooffer['title'] }}</h1>
+                <h1 data-gsap-element="header" class=" text-white text-center">{{ $g_herooffer['title'] }}</h1>
             @endif
 
             @if (!empty($g_herooffer['content']))

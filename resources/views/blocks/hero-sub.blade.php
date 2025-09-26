@@ -24,7 +24,7 @@ $backgroundImage = !empty($g_hero_sub['image']['url']) ? "linear-gradient(270deg
 			@if (!empty($g_hero_sub['subtitle']))
 			<p data-gsap-element="subheader" class="subtitle-s">{{ strip_tags($g_hero_sub['subtitle']) }}</p>
 			@endif
-			<h1 data-gsap-element="header" class="trajan text-white">{{ $g_hero_sub['title'] }}</h1>
+			<h1 data-gsap-element="header" class=" text-white">{{ $g_hero_sub['title'] }}</h1>
 
 			@if (!empty($g_hero_sub['cta']))
 			<div class="inline-buttons m-btn">
@@ -38,7 +38,7 @@ $backgroundImage = !empty($g_hero_sub['image']['url']) ? "linear-gradient(270deg
 		</div>
 	</div>
 
-	<img class="absolute top-0 left-0" src="http://mk.local/wp-content/uploads/2025/08/hero-shape.svg" />
+	<img class="absolute top-0 left-0" src="http://windes.local/wp-content/uploads/2025/08/hero-shape.svg" />
 
 	<a href="#" class="js-scroll-to-next">
 		<div class="__arrow bg-primary">

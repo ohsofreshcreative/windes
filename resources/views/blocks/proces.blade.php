@@ -21,7 +21,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				<p data-gsap-element="subheader" class="subtitle-s">{{ strip_tags($g_proces['subtitle']) }}</p>
 				@endif
 				@if (!empty($g_proces['title']))
-				<h2 data-gsap-element="header" class="m-title">{{ strip_tags($g_proces['title']) }}</h2>
+				<h2 data-gsap-element="header" class="m-header">{{ strip_tags($g_proces['title']) }}</h2>
 				@endif
 				<div data-gsap-element="txt" class="">{{ strip_tags($g_proces['txt']) }}</div>
 			</div>

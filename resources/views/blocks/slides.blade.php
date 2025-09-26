@@ -26,7 +26,7 @@ $customClass = $block->data['className'] ?? '';
 						@endif
 
 						@if(!empty($card['card_title']))
-						<h5 class="block m-title">{{ $card['card_title'] }}</h5>
+						<h5 class="block m-header">{{ $card['card_title'] }}</h5>
 						@endif
 
 						@if(!empty($card['card_txt']))

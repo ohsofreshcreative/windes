@@ -39,7 +39,7 @@ $sectionId = $block->data['id'] ?? null;
 
 		<div class="__content ml-14">
 			@if (!empty($about2['title2']))
-			<h2 class="m-title">{{ $about2['title2'] }}</h2>
+			<h2 class="m-header">{{ $about2['title2'] }}</h2>
 			@endif
 
 			@if (!empty($about2['content2']))

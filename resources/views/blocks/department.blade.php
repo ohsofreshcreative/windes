@@ -38,7 +38,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 			<div class="grid {{ $gridClass }} gap-8">
 				@foreach ($g_department['r_department'] as $item)
 				<div class="__card contact relative bg-white b-border p-8">
-					<h6 class="m-title">{{ $item['card_title'] }}</h6>
+					<h6 class="m-header">{{ $item['card_title'] }}</h6>
 					<p class="">{{ $item['card_txt'] }}</p>
 
 					<a class="__phone flex items-center w-max mt-4" href="tel:{{ $item['phone'] }}">{{ $item['phone'] }}</a>

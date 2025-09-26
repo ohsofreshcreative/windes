@@ -10,7 +10,7 @@ $sectionClass = '';
 			<div class="__content w-full lg:w-11/12 flex flex-col justify-between">
 				<div class="__data text-white">
 					<p data-gsap-element="subheader" class="subtitle-s">Kontakt</p>
-					<h2 data-gsap-element="subheader" class="trajan m-title text-white">{!! $g_contact_1['title'] !!}</h2>
+					<h2 data-gsap-element="subheader" class=" m-header text-white">{!! $g_contact_1['title'] !!}</h2>
 					<a data-gsap-element="subheader" class="__phone flex items-center text-white text-2xl w-max mt-4" href="tel:{{ $g_contact_1['phone'] }}">{{ $g_contact_1['phone'] }}</a>
 					<a data-gsap-element="subheader" class="__mail flex items-center text-white text-2xl w-max mt-4" href="mailto:{{ $g_contact_1['phone'] }}">{{ $g_contact_1['mail'] }}</a>
 					<div data-gsap-element="subheader" class="flex flex-col md:flex-row items-start md:items-center gap-8 mt-10">
@@ -29,5 +29,5 @@ $sectionClass = '';
 		</div>
 	</div>
 
-	<img class="absolute top-0 left-0" src="http://mk.local/wp-content/uploads/2025/08/hero-shape.svg" />
+	<img class="absolute top-0 left-0" src="http://windes.local/wp-content/uploads/2025/08/hero-shape.svg" />
 </section>

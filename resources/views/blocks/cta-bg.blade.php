@@ -12,7 +12,7 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 		<div class="bg-white b-border p-12">
 
 			@if ($cta_bg['title'])
-			<h3 class="m-title">{{ $cta_bg['title'] }}</h3>
+			<h3 class="m-header">{{ $cta_bg['title'] }}</h3>
 			<p class="">{{  strip_tags($cta_bg['content']) }}</p>
 			@endif
 			@if (!empty($cta_bg['button']))

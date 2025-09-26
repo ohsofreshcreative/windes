@@ -20,13 +20,13 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
 			@if (!empty($g_about['image']))
-			<div data-gsap-element="img-left" class="__img image-reveal-wrapper radius-img order1">
+			<div data-gsap-element="img-left" class="__img radius-img order1">
 				<img class="object-cover w-full __img img-xl radius-img" src="{{ $g_about['image']['url'] }}" alt="{{ $g_about['image']['alt'] ?? '' }}">
 			</div>
 			@endif
 
 			<div class="__content order2">
-				<h2 data-gsap-element="header" class="m-title">{{ $g_about['title'] }}</h2>
+				<h2 data-gsap-element="header" class="m-header">{{ $g_about['title'] }}</h2>
 
 				<div data-gsap-element="txt" class="">
 					{!! $g_about['txt'] !!}

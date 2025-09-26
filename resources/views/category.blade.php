@@ -20,7 +20,7 @@ $current_category_url = $term ? get_category_link($term->term_id) : home_url(); 
 
 		<div class="w-full sm:w-3/4 relative z-10">
 			<p data-gsap-element="subheader" class="subtitle-p">Baza wiedzy</p>
-			<h1 data-gsap-element="header" class="trajan text-white">{!! category_description() !!}</h1>
+			<h1 data-gsap-element="header" class=" text-white">{!! category_description() !!}</h1>
 		</div>
 	</div>
 	<img class="absolute mix-blend-overlay -top-20 -right-80" src="/wp-content/uploads/2025/08/logo-stroke.svg" />
@@ -81,7 +81,7 @@ $current_category_url = $term ? get_category_link($term->term_id) : home_url(); 
 @else
 <div class="mt-20 mb-20">
 	<div class="c-main">
-		<h3 class="trajan">Brak wpisów w tej kategorii.</h3>
+		<h3 class="">Brak wpisów w tej kategorii.</h3>
 		<a class="main-btn m-btn" href="/kategorie/wszystkie-wpisy/">Sprawdź wszystkie wpisy</a>
 	</div>
 </div>

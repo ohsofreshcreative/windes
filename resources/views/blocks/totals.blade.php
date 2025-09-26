@@ -19,7 +19,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 		<div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] items-center gap-10 mt-10">
 			<div class="__content order2 lg:mr-20">
 
-				<h2 data-gsap-element="header" class="m-title">{{ $g_totals['title'] }}</h2>
+				<h2 data-gsap-element="header" class="m-header">{{ $g_totals['title'] }}</h2>
 				<div data-gsap-element="txt" class="">
 					{!! $g_totals['txt'] !!}
 				</div>
@@ -41,7 +41,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 			</div>
 
 			@if (!empty($g_totals['image']))
-			<div data-gsap-element="img-right" class="__img image-reveal-wrapper radius-img order1">
+			<div data-gsap-element="img-right" class="__img radius-img order1">
 				<img class="object-cover w-full __img img-2xl radius-img" src="{{ $g_totals['image']['url'] }}" alt="{{ $g_totals['image']['alt'] ?? '' }}">
 			</div>
 			@endif

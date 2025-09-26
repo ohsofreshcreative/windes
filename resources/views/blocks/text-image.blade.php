@@ -18,7 +18,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 	<div class="__wrapper c-main relative">
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
 			@if (!empty($textimg['image']))
-			<div data-gsap-element="{{ $flip ? 'img-right' : 'img-left' }}" class="image-reveal-wrapper __img order1">
+			<div data-gsap-element="{{ $flip ? 'img-right' : 'img-left' }}" class="__img order1">
 				<img class="object-cover w-full __img img-xl radius-img" src="{{ $textimg['image']['url'] }}" alt="{{ $textimg['image']['alt'] ?? '' }}">
 			</div>
 			@endif

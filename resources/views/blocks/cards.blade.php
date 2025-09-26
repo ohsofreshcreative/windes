@@ -39,7 +39,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
         @foreach ($tiles['repeater'] as $item)
             <div class="__card relative b-border p-8">
                 <img class="mb-6" src="{{ $item['card_image']['url'] }}" alt="{{ $item['card_image']['alt'] ?? '' }}" />
-                <h6 class="m-title">{{ $item['card_title'] }}</h6>
+                <h6 class="m-header">{{ $item['card_title'] }}</h6>
                 <p class="">{{ $item['card_txt'] }}</p>
 
                 <div class="absolute top-0 right-0">

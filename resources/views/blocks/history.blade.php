@@ -24,7 +24,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				<div class="__year flex mt-20">
 					<div class="__card w-1/2 relative b-border p-8">
 						<img class="img-xs mb-6" src="{{ $item['card_image']['url'] }}" alt="{{ $item['card_image']['alt'] ?? '' }}" />
-						<h6 class="m-title">{{ $item['card_title'] }}</h6>
+						<h6 class="m-header">{{ $item['card_title'] }}</h6>
 						<p class="">{{ $item['card_txt'] }}</p>
 
 						<div class="absolute top-0 right-0">

@@ -3,7 +3,7 @@ use App\Walkers\DropdownWalker;
 use App\Walkers\MobileDropdownWalker;
 @endphp
 
-<header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-white masthead fixed-top">
+<header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-dark masthead fixed-top">
 
 	<!-- Desktop Header -->
 	<div class="items-center justify-between hidden h-full py-4 px-12 mx-auto md:flex">
@@ -15,7 +15,7 @@ use App\Walkers\MobileDropdownWalker;
 			@endif
 		</a>
 		@if (has_nav_menu('primary_navigation'))
-		<nav class="ml-15 nav-primary w-full" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
+		<nav class="ml-15 nav-primary w-max" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
 			{!! wp_nav_menu([
 			'theme_location' => 'primary_navigation',
 			'menu_class' => 'nav flex gap-x-5 lg:gap-x-8 text-sm font-medium items-center', // Usunięto 'nav-link' jeśli jest zbędne
@@ -25,6 +25,7 @@ use App\Walkers\MobileDropdownWalker;
 			]) !!}
 		</nav>
 		@endif
+		<a class="small-btn" href="#">Zamów on-line</a>
 	</div>
 
 	<!-- Mobile Header Bar -->
@@ -96,8 +97,5 @@ use App\Walkers\MobileDropdownWalker;
 				</a>
 			</div>
 		</div>
-
-		<img class="absolute top-0 left-0" src="http://mk.local/wp-content/uploads/2025/08/hero-shape.svg" />
-		<img class="absolute bottom-0 left-0 scale-y-[-1]" src="http://mk.local/wp-content/uploads/2025/08/hero-shape.svg" />
 	</div>
 </header>

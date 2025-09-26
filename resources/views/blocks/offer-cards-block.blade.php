@@ -28,7 +28,7 @@ $colCount = in_array((string)$columns, ['2', '3', '4'], true) ? (string)$columns
 			<p class="subtitle-p text-center">{{ $subtitle }}</p>
 			@endif
 			@if(!empty($title))
-			<h2 data-gsap-element="header" class="m-title text-center">{{ $title }}</h2>
+			<h2 data-gsap-element="header" class="m-header text-center">{{ $title }}</h2>
 			@endif
 
 			@if(!empty($tabs))
@@ -67,7 +67,7 @@ $colCount = in_array((string)$columns, ['2', '3', '4'], true) ? (string)$columns
 								@endif
 
 								<div class="__content p-6 flex flex-col grow">
-									<h5 class="m-title">
+									<h5 class="m-header">
 										<a href="{{ $post['permalink'] }}" class="hover:underline">{{ $post['title'] }}</a>
 									</h5>
 

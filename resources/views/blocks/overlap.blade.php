@@ -20,7 +20,7 @@ $customClass = $block->data['className'] ?? '';
 	<div class="__wrapper c-main relative">
 		<div class="__content order2">
 			<div class="__txt w-full md:w-1/2 mx-auto">
-				<h2 data-gsap-element="header" class="text-center m-title">{{ $g_overlap['title'] }}</h2>
+				<h2 data-gsap-element="header" class="text-center m-header">{{ $g_overlap['title'] }}</h2>
 
 				<div data-gsap-element="header" class="text-center">
 					{!! $g_overlap['content'] !!}

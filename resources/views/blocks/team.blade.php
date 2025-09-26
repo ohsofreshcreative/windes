@@ -17,7 +17,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 			@if (!empty($g_team['subtitle']))
 			<p data-gsap-element="subheader" class="subtitle-s">{{ strip_tags($g_team['subtitle']) }}</p>
 			@endif
-			<h2 data-gsap-element="header" class="m-title">{{ strip_tags($g_team['title']) }}</h2>
+			<h2 data-gsap-element="header" class="m-header">{{ strip_tags($g_team['title']) }}</h2>
 			<div data-gsap-element="txt" class="">
 				{!! $g_team['content'] !!}
 			</div>
@@ -43,7 +43,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 		<div class="grid {{ $gridClass }} pt-14 gap-8">
 			@foreach ($repeater as $item)
 			<div data-gsap-element="card" class="__card relative">
-			<div data-gsap-element="img-left" class="image-reveal-wrapper radius-img">
+			<div data-gsap-element="img-left" class="radius-img">
 				<img class="img-xl w-full radius-img object-cover mb-6" src="{{ $item['card_image']['url'] }}" alt="{{ $item['card_image']['alt'] ?? '' }}" />
 				</div>
 

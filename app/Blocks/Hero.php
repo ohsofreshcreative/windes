@@ -7,8 +7,8 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Hero extends Block
 {
-	public $name = 'Sekcja Hero';
-	public $description = 'Sekcja Hero';
+	public $name = 'Hero';
+	public $description = 'Hero';
 	public $slug = 'hero';
 	public $category = 'formatting';
 	public $icon = 'align-full-width';
@@ -35,13 +35,43 @@ class Hero extends Block
 				'open' => false,
 				'multi_expand' => true,
 			])
-			->addTab('Treść', ['placement' => 'top']) 
+			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_hero', ['label' => 'Hero'])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
+			->addTrueFalse('use_video', [
+  'label' => 'Użyj wideo w tle',
+  'ui' => 1,
+  'default_value' => 0, // domyślnie obraz
+  'ui_on_text' => 'Tak',
+  'ui_off_text' => 'Nie',
+])
+
+->addImage('image', [
+  'label' => 'Obraz',
+  'return_format' => 'array',
+  'preview_size' => 'medium',
+  'conditional_logic' => [
+    [[ 'field' => 'use_video', 'operator' => '!=', 'value' => 1 ]] // pokazuj tylko gdy wideo = off
+  ],
+])
+
+->addFile('video', [
+  'label' => 'Wideo (MP4/WebM/Ogg)',
+  'return_format' => 'array',
+  'mime_types' => 'mp4,webm,ogv',
+  'conditional_logic' => [
+    [[ 'field' => 'use_video', 'operator' => '==', 'value' => 1 ]]
+  ],
+])
+
+->addImage('video_poster', [
+  'label' => 'Poster (obrazek startowy)',
+  'return_format' => 'array',
+  'preview_size' => 'medium',
+  'conditional_logic' => [
+    [[ 'field' => 'use_video', 'operator' => '==', 'value' => 1 ]]
+  ],
+])
+
 			->addText('title', ['label' => 'Tytuł'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
@@ -60,7 +90,7 @@ class Hero extends Block
 
 			->endGroup()
 
-			->addTab('Ustawienia bloku', ['placement' => 'top']) 
+			->addTab('Ustawienia bloku', ['placement' => 'top'])
 
 			->addTrueFalse('flip', [
 				'label' => 'Odwrotna kolejność',

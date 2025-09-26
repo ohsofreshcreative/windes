@@ -18,7 +18,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 
 			<div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
 				@if (!empty($g_method['title']))
-				<h2 data-gsap-element="header" class="m-title">{{ strip_tags($g_method['title']) }}</h2>
+				<h2 data-gsap-element="header" class="m-header">{{ strip_tags($g_method['title']) }}</h2>
 				@endif
 				<div data-gsap-element="txt" class="">{{ strip_tags($g_method['txt']) }}</div>
 			</div>
@@ -28,11 +28,11 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				@foreach ($r_method as $item)
 				<div data-gsap-element="stagger" class="flex flex-col md:flex-row items-start lg:items-stretch gap-10 b-border-t pt-12 mb-12">
 					<div class="flex flex-col lg:flex-row gap-2 lg:gap-8">
-					<p class="trajan text-5xl secondary b-border-r pr-6 self-stretch flex items-center w-12">
+					<p class=" text-5xl secondary b-border-r pr-6 self-stretch flex items-center w-12">
 						{{ $loop->iteration }}
 					</p>
 
-						<p class="trajan text-2xl secondary flex-1 self-stretch flex items-center">
+						<p class=" text-2xl secondary flex-1 self-stretch flex items-center">
 							{{ $item['title'] }}
 						</p>
 

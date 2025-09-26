@@ -183,7 +183,7 @@ add_action('wp_footer', function () {
     <div id="side-modal" class="fixed top-0 right-0 h-full w-full max-w-lg bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-8 h-full overflow-y-auto">
             <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl">&times;</button>
-			<h5 class="m-title">Aplikuj na to stanowisko</h5>
+			<h5 class="m-header">Aplikuj na to stanowisko</h5>
             <div>Wypełnij formularz i dołącz swoje CV – odezwiemy się, aby omówić szczegóły i odpowiedzieć na Twoje pytania.</div>
             <!-- CF7 Form Container -->
             <div class="modal-content mt-8">

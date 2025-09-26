@@ -9,7 +9,7 @@ $sectionClass .= $flip ? ' order-flip' : '';
 
 	<div class="__wrapper c-main relative z-2">
 		<img data-gsap-element="image" class="object-contain __img pt-14" src="{{ $g_herocases['image']['url'] }}" alt="{{ $g_herocases['image']['alt'] ?? '' }}">
-		<h1 data-gsap-element="header" class="m-title w-3/4 md:w-full pt-24">{{ $g_herocases['title'] }}</h1>
+		<h1 data-gsap-element="header" class="m-header w-3/4 md:w-full pt-24">{{ $g_herocases['title'] }}</h1>
 
 		@if (has_post_thumbnail())
 		<img data-gsap-element="image" class="mt-20" src="{{ get_the_post_thumbnail_url(null, 'full') }}" alt="{{ get_the_title() }}">

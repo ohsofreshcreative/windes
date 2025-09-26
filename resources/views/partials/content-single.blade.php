@@ -4,7 +4,7 @@
 			<p data-gsap-element="subheader" class="subtitle-p text-center">
 				{{ is_category() ? single_cat_title('', false) : (get_the_category()[0]->name ?? '') }}
 			</p>
-			<h2 data-gsap-element="header" class="trajan text-white text-center">{{ get_the_title() }}</h2>
+			<h2 data-gsap-element="header" class=" text-white text-center">{{ get_the_title() }}</h2>
 			@if(has_excerpt())
 			<div data-gsap-element="content" class="">
 				{!! get_the_excerpt() !!}

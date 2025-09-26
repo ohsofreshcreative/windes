@@ -48,14 +48,14 @@ $sectionClass .= $secondarybg ? ' section-secondary' : '';
 
 			<!-- IMG -->
 			@if (!empty($g_benefit['image']))
-			<div data-gsap-element="img-left" class="__img image-reveal-wrapper radius-img order1">
+			<div data-gsap-element="img-left" class="__img radius-img order1">
 				<img class="img-m w-full radius-img object-cover" src="{{ $g_benefit['image']['url'] }}" alt="{{ $g_benefit['image']['alt'] ?? '' }}">
 			</div>
 			@endif
 
 			<!-- TXT -->
 			<div>
-				<h4 data-gsap-element="header" class="m-title">{{ $g_benefit['title'] }}</h4>
+				<h4 data-gsap-element="header" class="m-header">{{ $g_benefit['title'] }}</h4>
 				<div data-gsap-element="txt" class="">
 					{!! $g_benefit['txt'] !!}
 				</div>

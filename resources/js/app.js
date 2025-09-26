@@ -35,70 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
 
     // --------------------------------------------------------------------
-    // 1. ANIMACJA ODKRYWANIA OBRAZKA (REVEAL EFFECT Z MASKĄ CSS)
-    //    Obsługuje: data-gsap-element="img-left" i "img-right"
-    // --------------------------------------------------------------------
-    const revealImages = section.querySelectorAll("[data-gsap-element='img-left'], [data-gsap-element='img-right']");
-
-    revealImages.forEach((wrapper) => {
-      const img = wrapper.querySelector('img');
-      const direction = wrapper.dataset.gsapElement;
-
-      // Ustawiamy stan początkowy dla obrazka wewnątrz wrappera
-      gsap.set(img, {
-		opacity:0,
-        scale: 1.5, // Startuje lekko powiększony
-        autoAlpha: 1, // Upewniamy się, że jest widoczny (maska go ukrywa)
-      });
-
-      // Definiujemy, jak ma wyglądać maska na początku i na końcu animacji
-      let mask, maskTo;
-
-      if (direction === 'img-left') {
-        // Odkrywanie od lewej: maska zwija się w lewą stronę
-        mask = 'inset(0% 100% 0% 0%)'; // Maska zakrywa 100% od prawej
-        maskTo = 'inset(0% 0% 0% 0%)';   // Maska odkrywa wszystko
-      } else {
-        // Odkrywanie od prawej: maska zwija się w prawą stronę
-        mask = 'inset(0% 0% 0% 100%)'; // Maska zakrywa 100% od lewej
-        maskTo = 'inset(0% 0% 0% 0%)';   // Maska odkrywa wszystko
-      }
-      
-      // Ustawiamy stan początkowy maski na wrapperze
-      gsap.set(wrapper, {
-        clipPath: mask,
-      });
-
-      // Tworzymy oś czasu (timeline) dla pełnej kontroli nad animacją
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapper,
-          start: 'top 85%', // Kiedy animacja ma się zacząć
-          toggleActions: 'play none none none',
-          once: true,
-        },
-      });
-
-      // Animujemy jednocześnie:
-      // 1. Odkrycie obrazka przez animację clip-path na wrapperze.
-      // 2. Skalowanie obrazka do normalnego rozmiaru dla efektu głębi.
-      tl.to(wrapper, {
-          clipPath: maskTo,
-          duration: 0.8,
-          ease: 'power3.inOut',
-        })
-        .to(img, {
-            scale: 1,
-			opacity:1,
-            duration: 0.8,
-            ease: 'power3.inOut',
-          },
-          "<" // "<" oznacza "zacznij w tym samym czasie co poprzednia animacja"
-        );
-    });
-
-
-    // --------------------------------------------------------------------
     // 2. STANDARDOWA ANIMACJA OBRAZKÓW (FADE IN UP)
     //    Obsługuje: data-gsap-element="img"
     // --------------------------------------------------------------------
@@ -213,3 +149,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
