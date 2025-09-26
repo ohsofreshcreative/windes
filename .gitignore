@@ -38,3 +38,4 @@ deploy/
 
 # === Git ===
 .gitkeep
+vendor/
