@@ -1,43 +1,37 @@
+/*--- GŁÓWNE IMPORTY ---*/
+// Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
+import Alpine from 'alpinejs';
+
+// Importy zasobów dla Vite (np. obrazy, fonty)
 import.meta.glob(['../images/**', '../fonts/**']);
 
+// Twoje niestandardowe moduły JS
 import './menubar.js';
 import './footer-accordion.js';
 import './swiper.js';
 
-/*--- BLOCKS ---*/
-
+// Importy bloków ACF (jeśli używasz)
 Object.values(import.meta.glob('./blocks/*.js', { eager: true }));
 
-/*--- GSAP ---*/
 
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
-
-/*--- ALPINE ---*/
-
-import Alpine from 'alpinejs';
-
+/*--- INICJALIZACJA BIBLIOTEK ---*/
+// Uruchom Alpine.js
 window.Alpine = Alpine;
 Alpine.start();
 
-/*--- GSAP ---*/
 
-/*--- GSAP - Kompletny skrypt animacji ---*/
+/*--- SKRYPTY URUCHAMIANE PO ZAŁADOWANIU STRONY ---*/
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Rejestrujemy wtyczkę ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
 
-  // Przechodzimy przez każdą sekcję z atrybutem animacji
+  // Sprawdzenie, czy globalny GSAP istnieje. Jeśli nie, nic nie robimy, aby uniknąć błędów.
+  if (typeof gsap === 'undefined') {
+    console.error('GSAP nie został załadowany globalnie. Sprawdź plik app/setup.php lub functions.php');
+    return;
+  }
+
+  // --- TWOJE ISTNIEJĄCE ANIMACJE GSAP (TERAZ POWINNY DZIAŁAĆ) ---
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
-
-    // --------------------------------------------------------------------
-    // 2. STANDARDOWA ANIMACJA OBRAZKÓW (FADE IN UP)
-    //    Obsługuje: data-gsap-element="img"
-    // --------------------------------------------------------------------
     const standardImages = section.querySelectorAll("[data-gsap-element='img']");
     standardImages.forEach((img) => {
       gsap.from(img, {
@@ -55,10 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-
-    // --------------------------------------------------------------------
-    // 3. ANIMACJA DLA POZOSTAŁYCH ELEMENTÓW
-    // --------------------------------------------------------------------
     const otherElements = section.querySelectorAll(
       "[data-gsap-element]:not([data-gsap-element*='img']):not([data-gsap-element='stagger'])"
     );
@@ -79,10 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-
-    // --------------------------------------------------------------------
-    // 4. ANIMACJA Z OPÓŹNIENIEM (STAGGER)
-    // --------------------------------------------------------------------
     const staggerElements = section.querySelectorAll("[data-gsap-element='stagger']");
     if (staggerElements.length > 0) {
       const sorted = [...staggerElements].sort((a, b) => {
@@ -110,44 +96,27 @@ document.addEventListener('DOMContentLoaded', function () {
         },
       });
     }
-
   });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Znajdź wszystkie linki ze strzałkami do przewijania
-    const scrollArrows = document.querySelectorAll('.js-scroll-to-next');
-
-    scrollArrows.forEach(arrow => {
-        arrow.addEventListener('click', function(event) {
-            // Zatrzymaj domyślną akcję linku
-            event.preventDefault();
-
-            // Znajdź najbliższą nadrzędną sekcję
-            const currentSection = this.closest('section');
-
-            if (currentSection) {
-                const nextSection = currentSection.nextElementSibling;
-
-                if (nextSection) {
-                    // Wysokość Twojego menu (offset)
-                    const offset = 104;
-
-                    // Oblicz pozycję następnej sekcji względem góry strony
-                    const sectionTopPosition = nextSection.getBoundingClientRect().top + window.scrollY;
-
-                    // Odejmij wysokość menu od pozycji docelowej
-                    const targetPosition = sectionTopPosition - offset;
-
-                    // Użyj window.scrollTo, aby precyzyjnie ustawić pozycję z płynnym efektem
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
+  // --- SKRYPT DO PRZEWIJANIA ---
+  const scrollArrows = document.querySelectorAll('.js-scroll-to-next');
+  scrollArrows.forEach(arrow => {
+    arrow.addEventListener('click', function(event) {
+      event.preventDefault();
+      const currentSection = this.closest('section');
+      if (currentSection) {
+        const nextSection = currentSection.nextElementSibling;
+        if (nextSection) {
+          const offset = 104;
+          const sectionTopPosition = nextSection.getBoundingClientRect().top + window.scrollY;
+          const targetPosition = sectionTopPosition - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
     });
+  });
+
 });
-
-

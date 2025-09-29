@@ -5,14 +5,14 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Duotitle extends Block
+class Inspirations extends Block
 {
-	public $name = 'Treść oraz zdjęcie (duotitle)';
-	public $description = 'duotitle';
-	public $slug = 'duotitle';
+	public $name = 'Inspiracje';
+	public $description = 'Inspiracje';
+	public $slug = 'inspirations';
 	public $category = 'formatting';
-	public $icon = 'align-pull-left';
-	public $keywords = ['tresc', 'zdjecie'];
+	public $icon = 'images-alt';
+	public $keywords = ['inspiracje', 'zdjecie'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -24,31 +24,23 @@ class Duotitle extends Block
 
 	public function fields()
 	{
-		$duotitle = new FieldsBuilder('duotitle');
+		$inspirations = new FieldsBuilder('inspirations');
 
-		$duotitle
-			->setLocation('block', '==', 'acf/duotitle') // ważne!
+		$inspirations
+			->setLocation('block', '==', 'acf/inspirations') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Treść oraz zdjęcie (duotitle)',
+				'label' => 'Inspiracje',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- GROUP ---*/
-			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('g_duotitle', ['label' => ''])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
+			->addTab('Treści', ['placement' => 'top'])
+			->addGroup('g_inspirations', ['label' => ''])
 			->addText('title', ['label' => 'Tytuł'])
-			->addText('header1', ['label' => 'Nagłówek - ciemny'])
-			->addText('header2', ['label' => 'Nagłówek - jasny'])
-			->addText('header', ['label' => 'Nagłówek - sekcji'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
 				'tabs' => 'all', // 'visual', 'text', 'all'
@@ -59,8 +51,28 @@ class Duotitle extends Block
 				'label' => 'Przycisk',
 				'return_format' => 'array',
 			])
-			->addImage('bg', [
-				'label' => 'Obraz w tle',
+			->endGroup()
+
+			/*--- PHOTOS ---*/
+			->addTab('Zdjęcia', ['placement' => 'top'])
+			->addGroup('g_photos', ['label' => ''])
+			->addImage('image1', [
+				'label' => 'Obraz #1 - Duży',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'medium',
+			])
+			->addImage('image2', [
+				'label' => 'Obraz #2',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'medium',
+			])
+			->addImage('image3', [
+				'label' => 'Obraz #3',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'medium',
+			])
+			->addImage('image4', [
+				'label' => 'Obraz #4',
 				'return_format' => 'array', // lub 'url', lub 'id'
 				'preview_size' => 'medium',
 			])
@@ -124,13 +136,14 @@ class Duotitle extends Block
 				'ui_off_text' => 'Nie',
 			]);
 
-		return $duotitle;
+		return $inspirations;
 	}
 
 	public function with()
 	{
 		return [
-			'g_duotitle' => get_field('g_duotitle'),
+			'g_inspirations' => get_field('g_inspirations'),
+			'g_photos' => get_field('g_photos'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),

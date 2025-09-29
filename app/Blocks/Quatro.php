@@ -5,14 +5,14 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Duotitle extends Block
+class Quatro extends Block
 {
-	public $name = 'Treść oraz zdjęcie (duotitle)';
-	public $description = 'duotitle';
-	public $slug = 'duotitle';
+	public $name = 'Treść oraz 4 zdjęcia';
+	public $description = 'quatro';
+	public $slug = 'quatro';
 	public $category = 'formatting';
-	public $icon = 'align-pull-left';
-	public $keywords = ['tresc', 'zdjecie'];
+	public $icon = 'table-col-before';
+	public $keywords = ['tresc', 'zdjecia'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -24,31 +24,30 @@ class Duotitle extends Block
 
 	public function fields()
 	{
-		$duotitle = new FieldsBuilder('duotitle');
+		$text_image = new FieldsBuilder('quatro');
 
-		$duotitle
-			->setLocation('block', '==', 'acf/duotitle') // ważne!
+		$text_image
+			->setLocation('block', '==', 'acf/quatro') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Treść oraz zdjęcie (duotitle)',
+				'label' => 'Treść oraz 4 zdjęcia',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('g_duotitle', ['label' => ''])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
+			->addGroup('g_quatro', ['label' => ''])
+			->addGallery('gallery', [
+				'label' => 'Obrazy',
 				'preview_size' => 'medium',
+				'library' => 'all',
+				'min' => 1,
+				'max' => 4,
 			])
 			->addText('title', ['label' => 'Tytuł'])
-			->addText('header1', ['label' => 'Nagłówek - ciemny'])
-			->addText('header2', ['label' => 'Nagłówek - jasny'])
-			->addText('header', ['label' => 'Nagłówek - sekcji'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
 				'tabs' => 'all', // 'visual', 'text', 'all'
@@ -58,11 +57,6 @@ class Duotitle extends Block
 			->addLink('button', [
 				'label' => 'Przycisk',
 				'return_format' => 'array',
-			])
-			->addImage('bg', [
-				'label' => 'Obraz w tle',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
 			])
 			->endGroup()
 
@@ -124,13 +118,13 @@ class Duotitle extends Block
 				'ui_off_text' => 'Nie',
 			]);
 
-		return $duotitle;
+		return $text_image;
 	}
 
 	public function with()
 	{
 		return [
-			'g_duotitle' => get_field('g_duotitle'),
+			'g_quatro' => get_field('g_quatro'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),

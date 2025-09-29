@@ -8,8 +8,8 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 class TextImage extends Block
 {
 	public $name = 'Treść oraz zdjęcie';
-	public $description = 'text-image';
-	public $slug = 'text-image';
+	public $description = 'textimg';
+	public $slug = 'textimg';
 	public $category = 'formatting';
 	public $icon = 'align-pull-left';
 	public $keywords = ['tresc', 'zdjecie'];
@@ -24,10 +24,10 @@ class TextImage extends Block
 
 	public function fields()
 	{
-		$text_image = new FieldsBuilder('text-image');
+		$textimg = new FieldsBuilder('textimg');
 
-		$text_image
-			->setLocation('block', '==', 'acf/text-image') // ważne!
+		$textimg
+			->setLocation('block', '==', 'acf/textimg') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
@@ -39,7 +39,7 @@ class TextImage extends Block
 			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('textimg', ['label' => ''])
+			->addGroup('g_textimg', ['label' => ''])
 			->addImage('image', [
 				'label' => 'Obraz',
 				'return_format' => 'array', // lub 'url', lub 'id'
@@ -116,13 +116,13 @@ class TextImage extends Block
 				'ui_off_text' => 'Nie',
 			]);
 
-		return $text_image;
+		return $textimg;
 	}
 
 	public function with()
 	{
 		return [
-			'textimg' => get_field('textimg'),
+			'g_textimg' => get_field('g_textimg'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),

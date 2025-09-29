@@ -1,7 +1,7 @@
 <footer class="footer">
-	<div class="__wrap bg-primary">
-		<div class="__wrapper c-main">
-			<div class="__widgets grid gap-1 md:gap-6 pt-0 pb-30 md:py-36">
+	<div class="__wrap bg-dark relative">
+		<div class="__wrapper c-main relative z-10">
+			<div class="__widgets grid gap-1 md:gap-6 py-36">
 				@for ($i = 1; $i <= 4; $i++)
 					@if (is_active_sidebar('sidebar-footer-' . $i))
 					<div>@php(dynamic_sidebar('sidebar-footer-' . $i))</div>
@@ -9,6 +9,7 @@
 			@endfor
 		</div>
 	</div>
+		<img class="absolute left-0 bottom-0" src="/wp-content/uploads/2025/09/footer-img.svg" />
 	</div>
 
 	<div class="c-main flex flex-col md:flex-row justify-between gap-6 py-10 footer-bottom">
@@ -18,7 +19,5 @@
 		</p>
 	</div>
 	</div>
-
-
 
 </footer>

@@ -139,8 +139,8 @@ add_action('widgets_init', function () {
 	$defaultConfig = [
 		'before_widget' => '<section class="footer_widget widget %1$s %2$s">',
 		'after_widget' => '</section>',
-		'before_title' => '<h4 class="widget-title text-h5 text-p-lighter mb-4 flex">',
-		'after_title' => '</h4>',
+		'before_title' => '<h5 class="widget-title text-h5 primary mb-4 flex">',
+		'after_title' => '</h5>',
 	];
 
 	register_sidebar([
@@ -169,6 +169,23 @@ add_action('widgets_init', function () {
 	] + $defaultConfig);
 });
 
+
+/*--- GSAP ---*/
+
+add_action('wp_enqueue_scripts', function () {
+    /**
+     * Rejestracja i ładowanie skryptów.
+     */
+
+    // Ładuj GSAP i ScrollTrigger z CDN.
+    // Trzeci argument (tablica []) oznacza brak zależności.
+    // Piąty argument (true) umieszcza skrypty w stopce.
+    wp_enqueue_script('gsap-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', [], null, true);
+    
+    // Ustawiamy zależność 'gsap-st-cdn' od 'gsap-cdn', aby załadowały się w dobrej kolejności.
+    wp_enqueue_script('gsap-st-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', ['gsap-cdn'], null, true);
+
+}, 1); // Ustawiamy priorytet na 1, aby wykonało się BARDZO wcześnie.
 
 /*-- CAREER MODAL ---*/
 

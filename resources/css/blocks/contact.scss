@@ -1,7 +1,16 @@
 .contact {
   .__data {
-	font-size:18px;
+    font-size: 16px;
   }
+
+  .__data a {
+	color:var(--text-s-light);
+  }
+  
+  .__data a:hover {
+	color:var(--text-s-lighter);
+  }
+
   .__phone {
     display: flex;
   }
@@ -11,7 +20,7 @@
     margin-right: 16px;
     position: relative;
     top: 4px;
-	max-width: 40px;
+    max-width: 40px;
   }
 
   .__mail {
@@ -23,9 +32,19 @@
     margin-right: 16px;
     position: relative;
     top: 4px;
-	max-width: 40px;
+    max-width: 40px;
   }
 
-  .__address {
+  .__glow {
+    top: -10%;
+    left: -10%;
+    width: 489px;
+    height: 489px;
+    flex-shrink: 0;
+    position: absolute;
+    border-radius: 489px;
+    background: linear-gradient(315deg, rgba(240, 246, 255, 0.00) 32.21%, #CDDEF4 84.97%);
+
+    filter: blur(15px);
   }
 }
