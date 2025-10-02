@@ -2,11 +2,13 @@
 $sectionClass = '';
 @endphp
 
-<section data-gsap-anim="section" class="contact bg-s-lighter relative -spt pb-30 {{ $sectionClass }}">
+<!--- contact --->
+
+<section data-gsap-anim="section" class="contact bg-s-lighter relative -smt pt-30 pb-30 {{ $sectionClass }}">
 
 	<div class="__wrapper c-main relative z-2">
 
-		<div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-10 mt-14 z-10">
+		<div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-10 z-10">
 			<div class="__content w-full lg:w-11/12 flex flex-col justify-between">
 				<div class="__data">
 					<h2 data-gsap-element="header" class="">{!! $g_contact_1['header'] !!}</h2>

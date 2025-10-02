@@ -17,18 +17,20 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 
 	<div class="__wrapper c-main">
 		<div class="">
-			@if (!empty($g_numbers['subtitle']))
-			<p class="subtitle-p">{{ strip_tags($g_numbers['subtitle']) }}</p>
-			@endif
-			@if (!empty($g_numbers['title']))
-			<p class=" text-[22px] md:text-5xl mt-2 !mb-16">{{ strip_tags($g_numbers['title']) }}</h2>
-			@endif
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				@if (!empty($g_numbers['header']))
+				<h3 class="">{{ strip_tags($g_numbers['header']) }}</h3>
+				@endif
+				<div data-gsap-element="txt" class="mt-2">
+					{!! $g_numbers['txt'] !!}
+				</div>
+			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-top-p pt-10 mt-20">
 				@foreach ($g_numbers['r_numbers'] as $item)
-				<div class="__card relative">
-					<p class="text-h1">{{ $item['card_title'] }}<span class="text-light">{{ $item['symbol'] }}</span></p>
-					<p class="text-lg">{{ $item['card_txt'] }}</p>
+				<div class="__card relative border-right-p pr-4">
+					<p class="text-h1">{{ $item['title'] }}</p>
+					<p class="">{{ $item['txt'] }}</p>
 				</div>
 				@endforeach
 			</div>

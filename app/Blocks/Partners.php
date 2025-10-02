@@ -5,45 +5,42 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class ThreeColumns extends Block
+class Partners extends Block
 {
-	public $name = 'Trzy kolumny';
-	public $description = 'three-columns';
-	public $slug = 'three-columns';
+	public $name = 'Slider - Partnerzy';
+	public $description = 'partners';
+	public $slug = 'partners';
 	public $category = 'formatting';
-	public $icon = 'columns';
-	public $keywords = ['O nas', 'Strona glowna'];
+	public $icon = 'image-flip-horizontal';
+	public $keywords = ['partners', 'kafelki'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
 		'mode' => false,
 		'jsx' => true,
-		'anchor' => true,
-		'customClassName' => true,
 	];
 
 	public function fields()
 	{
-		$three_columns = new FieldsBuilder('three-columns');
+		$partners = new FieldsBuilder('partners');
 
-		$three_columns
-			->setLocation('block', '==', 'acf/three-columns') // ważne!
+		$partners
+			->setLocation('block', '==', 'acf/partners') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Trzy kolumny',
+				'label' => 'Slider - Kafelki',
 				'open' => false,
 				'multi_expand' => true,
 			])
-			/*--- GROUP ---*/
-			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('threecols', ['label' => ''])
-
-			->addText('header', ['label' => 'Nagłówek'])
-			->addTextarea('text', [
-				'label' => 'Opis #1',
+			/*--- FIELDS ---*/
+			->addTab('Treści', ['placement' => 'top'])
+			->addGroup('g_partners', ['label' => ''])
+			->addText('header', ['label' => 'Tytuł'])
+			->addTextarea('txt', [
+				'label' => 'Opis',
 				'rows' => 4,
 				'new_lines' => 'br',
 			])
@@ -51,35 +48,36 @@ class ThreeColumns extends Block
 				'label' => 'Przycisk',
 				'return_format' => 'array',
 			])
-			->addTextarea('text2', [
-				'label' => 'Opis #2',
+			->endGroup()
+
+			/*--- FIELDS ---*/
+			->addTab('Kafelki', ['placement' => 'top'])
+
+			->addRepeater('r_partners', [
+				'label' => 'Slider - Partnerzy',
+				'layout' => 'table', // 'row', 'block', albo 'table'
+				'min' => 1,
+				'max' => 10,
+				'button_label' => 'Dodaj kafelek'
+			])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'medium',
+			])
+			->addText('title', [
+				'label' => 'Nagłówek',
+			])
+			->addTextarea('txt', [
+				'label' => 'Opis',
 				'rows' => 4,
 				'new_lines' => 'br',
 			])
-			->addAccordion('accordion2', [
-				'label' => 'Zdjęcia',
-				'open' => false,
-				'multi_expand' => true,
+			->addLink('button', [
+				'label' => 'Przycisk',
+				'return_format' => 'array',
 			])
-			->addImage('image1', [
-				'label' => 'Obraz #1',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
-			->addImage('image2', [
-				'label' => 'Obraz #2',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
-			->addImage('image3', [
-				'label' => 'Obraz #3',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
-			->addAccordion('endpoint1', [
-				'endpoint' => true,
-			])
-			->endGroup()
+			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -145,13 +143,14 @@ class ThreeColumns extends Block
 				'ui_off_text' => 'Nie',
 			]);
 
-		return $three_columns;
+		return $partners;
 	}
 
 	public function with()
 	{
 		return [
-			'threecols' => get_field('threecols'),
+			'g_partners' => get_field('g_partners'),
+			'r_partners' => get_field('r_partners'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),

@@ -111,6 +111,12 @@ class Categories extends Block
 				'ui' => 1,
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('darkbg', [
+				'label' => 'Ciemne tło',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
 			]);
 
 		return $categories;
@@ -170,6 +176,7 @@ class Categories extends Block
             'lightbg' => get_field('lightbg'),
             'graybg' => get_field('graybg'),
             'whitebg' => get_field('whitebg'),
+            'darkbg' => get_field('darkbg'),
             'brandbg' => get_field('brandbg'),
         ];
     }

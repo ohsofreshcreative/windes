@@ -6,6 +6,7 @@
       $graybg ? 'section-gray' : '',
       $whitebg ? 'section-white' : '',
       $brandbg ? 'section-brand' : '',
+      $darkbg ? 'section-dark' : '',
   ])->filter()->implode(' ');
 @endphp
 

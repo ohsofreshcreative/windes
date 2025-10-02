@@ -1,33 +1,34 @@
-<section data-gsap-anim="section" class="bg-gradient relative overflow-hidden">
-	<div class="__wrapper c-main relative z-10 py-40">
-		<div class="__content w-full sm:w-3/4 m-auto pb-10">
-			<p data-gsap-element="subheader" class="subtitle-p text-center">
-				{{ is_category() ? single_cat_title('', false) : (get_the_category()[0]->name ?? '') }}
-			</p>
-			<h2 data-gsap-element="header" class=" text-white text-center">{{ get_the_title() }}</h2>
+@php
+$backgroundImage = !empty(get_the_post_thumbnail_url(null, 'full')) ? "
+linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%),
+linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%),
+url(" . get_the_post_thumbnail_url(null, 'full') . ") " : '';
+@endphp
+
+<section data-gsap-anim="section" class="hero relative overflow-hidden" style="background-image: {{ $backgroundImage }}; background-size: cover; background-position: center;">
+	<div class="__wrapper c-main relative z-10 pt-60 pb-26">
+		<div class="__content w-full sm:w-3/4">
+			<h1 data-gsap-element="header" class=" text-white text-h2">{{ get_the_title() }}</h1>
 			@if(has_excerpt())
 			<div data-gsap-element="content" class="">
 				{!! get_the_excerpt() !!}
 			</div>
 			@endif
+
+			<a data-gsap-element="btn" href="#" class="js-scroll-to-next block m-btn">
+				<div class="__arrow bg-primary">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none">
+						<path d="M10.7383 22.7454L19.4181 14.0655C19.8264 13.6572 19.8265 12.9932 19.4183 12.585C19.0101 12.1768 18.3461 12.1768 17.9378 12.5851L11.0484 19.4744L11.0476 1.99787C11.0474 1.41913 10.5788 0.95049 10 0.950244C9.42127 0.950596 8.95255 1.41932 8.9522 1.99806L8.953 19.4752L2.06463 12.5869C1.65641 12.1786 0.99242 12.1787 0.584122 12.587C0.175823 12.9953 0.175763 13.6593 0.583987 14.0675L9.25988 22.7434C9.666 23.1537 10.33 23.1537 10.7383 22.7454Z" fill="white" />
+					</svg>
+				</div>
+			</a>
 		</div>
 	</div>
-	<img class="absolute mix-blend-soft-light -top-20 -right-80" src="/wp-content/uploads/2025/08/logo-stroke.svg" />
 </section>
 
-@if (has_post_thumbnail())
-<div class="relative z-10 -mt-32">
-	<div class="c-wide">
-		<img class="img-2xl w-full object-cover radius-img" src="{{ get_the_post_thumbnail_url(null, 'full') }}" alt="{{ get_the_title() }}">
-	</div>
-</div>
-@endif
-
-<div id="tresc" class="__entry mt-20">
+<div id="tresc" class="__entry mt-10">
 	<div class="c-main">
-		<div class="w-full md:w-2/3 m-auto">
-			{!! the_content() !!}
-		</div>
+		{!! the_content() !!}
 	</div>
 </div>
 
@@ -44,23 +45,23 @@ $related_query = new WP_Query($related_args);
 @endphp
 
 @if($related_query->have_posts())
-<section class="related-posts bg-white -smt pt-20 pb-26">
-	<div class="c-main">
-		<h3 class="text-2xl font-bold mb-6">Wpisy z tej kategorii</h3>
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section class="related-posts -smt pb-26">
+	<div class="c-main border-top-p pt-20">
+		<h3 class="text-center">Podobne wpisy</h3>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
 			@while($related_query->have_posts())
 			@php($related_query->the_post())
-			<article @php(post_class(['bg-white', 'rounded-2xl' , 'p-4' ]))>
+			<article @php(post_class([ '' ]))>
 				<header>
 					@if(has_post_thumbnail())
 					<div class="overflow-hidden rounded-xl">
 						<a class="" href="{{ get_permalink() }}">
-							{!! get_the_post_thumbnail(null, 'large', ['class' => 'featured-image img-xs rounded-xl object-cover']) !!}
+							{!! get_the_post_thumbnail(null, 'large', ['class' => 'featured-image img-s rounded-xl object-cover']) !!}
 						</a>
 					</div>
 					@endif
 
-					<h6 class="entry-title text-h5 mt-6 rounded p-">
+					<h6 class="text-center mt-6">
 						<a href="{{ get_permalink() }}">
 							{!! get_the_title() !!}
 						</a>
@@ -69,12 +70,12 @@ $related_query = new WP_Query($related_args);
 					<!--  @include('partials.entry-meta') -->
 				</header>
 
-				<a class="m-btn block" href="{{ get_permalink() }}">
-					<div class="blog-btn bg-p-light rounded-full w-max">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
-							<path d="M22.7454 9.26177L14.0655 0.581915C13.6572 0.173617 12.9932 0.173556 12.585 0.581781C12.1768 0.990005 12.1768 1.65399 12.5851 2.06229L19.4744 8.95162L1.99787 8.95242C1.41912 8.95267 0.95049 9.4213 0.950243 10C0.950595 10.5788 1.41932 11.0475 1.99806 11.0479L19.4752 11.0471L12.5869 17.9354C12.1786 18.3437 12.1787 19.0076 12.587 19.4159C12.9953 19.8242 13.6593 19.8243 14.0675 19.4161L22.7434 10.7402C23.1537 10.3341 23.1536 9.67007 22.7454 9.26177Z" fill="#2B176A" />
-						</svg>
-					</div>
+
+
+				<a href="{{ get_permalink($post->ID) }}" class="block bg-secondary rounded-full w-max m-auto p-6 mt-6">
+					<svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.25678 0.469541C7.39905 0.320681 7.56797 0.202597 7.75387 0.122032C7.93978 0.0414667 8.13904 0 8.34028 0C8.54151 0 8.74077 0.0414667 8.92668 0.122032C9.11259 0.202597 9.2815 0.320681 9.42377 0.469541L15.5519 6.87946C15.8389 7.17993 16 7.58722 16 8.01188C16 8.43654 15.8389 8.84384 15.5519 9.1443L9.42377 15.5542C9.13458 15.8442 8.74828 16.0042 8.34767 15.9999C7.94705 15.9956 7.56399 15.8273 7.28058 15.5311C6.99718 15.2349 6.83598 14.8343 6.83153 14.4153C6.82708 13.9963 6.97974 13.5921 7.25678 13.2894L10.7703 9.61436H1.53204C1.12572 9.61436 0.736039 9.44553 0.448725 9.14501C0.161411 8.84448 0 8.43689 0 8.01188C0 7.58688 0.161411 7.17928 0.448725 6.87876C0.736039 6.57823 1.12572 6.4094 1.53204 6.4094L10.7703 6.4094L7.25678 2.73438C6.96988 2.43391 6.80873 2.02662 6.80873 1.60196C6.80873 1.1773 6.96988 0.770007 7.25678 0.469541Z" fill="white" />
+					</svg>
 				</a>
 
 				<!--   <div class="entry-summary">

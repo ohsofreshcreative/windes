@@ -61,7 +61,8 @@ class Contact extends Block
 			->addText('title', ['label' => 'Tytuł'])
 			->addText('shortcode', [
 				'label' => 'Kod formularza',
-				'instructions' => 'Wklej shortcode formularza, np. [contact-form-7 id="84690e3" title="Contact form 1"]',
+				'instructions' => 'Wklej kod formularza:  [contact-form-7 id="f12c470" title="Contact form 1"]',
+				'default_value' => '[contact-form-7 id="f12c470" title="Contact form 1"]',
 			])
 			->endGroup()
 

@@ -39,8 +39,13 @@ class Numbers extends Block
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_numbers', ['label' => ''])
 
-			->addText('subtitle', ['label' => 'Śródtytuł'])
-			->addText('title', ['label' => 'Tytuł'])
+			->addText('header', ['label' => 'Tytuł'])
+			->addWysiwyg('txt', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
 
 			->addRepeater('r_numbers', [
 				'label' => 'Kafelki',
@@ -49,18 +54,10 @@ class Numbers extends Block
 				'max' => 4,
 				'button_label' => 'Dodaj kafelek'
 			])
-			->addImage('card_image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
-			->addText('card_title', [
+			->addText('title', [
 				'label' => 'Nagłówek',
 			])
-			->addText('symbol', [
-				'label' => 'Symbol',
-			])
-			->addTextarea('card_txt', [
+			->addTextarea('txt', [
 				'label' => 'Opis',
 				'rows' => 4,
 				'new_lines' => 'br',

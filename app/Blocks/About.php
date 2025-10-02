@@ -7,12 +7,12 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class About extends Block
 {
-	public $name = 'Treść oraz zdjęcie + ikony';
+	public $name = 'O nas';
 	public $description = 'about';
 	public $slug = 'about';
 	public $category = 'formatting';
-	public $icon = 'editor-ul';
-	public $keywords = ['about', 'ikony'];
+	public $icon = 'admin-users';
+	public $keywords = ['about', 'o nas'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -33,53 +33,45 @@ class About extends Block
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Treść oraz zdjęcie + ikony',
+				'label' => 'O nas',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_about', ['label' => ''])
-			->addText('top', ['label' => 'Nagłówek'])
+			->addAccordion('accordion2', [
+				'label' => 'Lewa strona',
+				'open' => false,
+				'multi_expand' => false,
+			])
 			->addImage('image', [
-				'label' => 'Obraz',
+				'label' => 'Obraz #1',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'medium',
+			])
+			->addText('nr', ['label' => 'Liczba'])
+			->addText('description', ['label' => 'Opis'])
+			
+			->addAccordion('accordion3', [
+				'label' => 'Prawa strona',
+				'open' => false,
+				'multi_expand' => false,
+			])
+			->addImage('image2', [
+				'label' => 'Obraz #2',
 				'return_format' => 'array', // lub 'url', lub 'id'
 				'preview_size' => 'medium',
 			])
 			->addText('title', ['label' => 'Tytuł'])
+			->addText('header', ['label' => 'Nagłówek'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
 				'tabs' => 'all', // 'visual', 'text', 'all'
 				'toolbar' => 'full', // 'basic', 'full'
 				'media_upload' => true,
 			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
-			])
-
 			->endGroup()
-
-			->addTab('Punkty', ['placement' => 'top'])
-			->addRepeater('r_about', [
-				'label' => 'Funkcje',
-				'layout' => 'table', // 'row', 'block', albo 'table'
-				'min' => 2,
-				'max' => 2,
-				'button_label' => 'Dodaj element oferty'
-			])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
-			->addText('title', ['label' => 'Nagłówek'])
-			->addTextarea('txt', [
-				'label' => 'Opis cechy',
-				'rows' => 3,
-				'new_lines' => 'br',
-			])
-			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -114,29 +106,20 @@ class About extends Block
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
 			])
-			->addTrueFalse('lightbg', [
-				'label' => 'Jasne tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('graybg', [
-				'label' => 'Szare tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('whitebg', [
-				'label' => 'Białe tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('brandbg', [
-				'label' => 'Tło marki',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
+			->addSelect('bg', [
+				'label' => 'Tło sekcji',
+				'choices' => [
+					'x' => '— brak —',
+					'light' => 'Jasne tło',
+					'gray' => 'Szare tło',
+					'white' => 'Białe tło',
+					'brand' => 'Tło marki',
+					'dark' => 'Ciemne tło',
+				],
+				'default_value' => '',
+				'allow_null'    => 0,
+				'multiple'      => 0,
+				'ui'            => 1,
 			]);
 
 		return $about;
@@ -146,17 +129,13 @@ class About extends Block
 	{
 		return [
 			'g_about' => get_field('g_about'),
-			'r_about' => get_field('r_about'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),
 			'wide' => get_field('wide'),
 			'nomt' => get_field('nomt'),
 			'gap' => get_field('gap'),
-			'lightbg' => get_field('lightbg'),
-			'graybg' => get_field('graybg'),
-			'whitebg' => get_field('whitebg'),
-			'brandbg' => get_field('brandbg'),
+			'bg' => get_field('bg'),
 		];
 	}
 }

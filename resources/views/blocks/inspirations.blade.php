@@ -56,7 +56,6 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 			@endif
 		</div>
 
-		<div class="__glow"> 
-		</div>
+		<div class="__glow"></div>
 	</div>
 </section>

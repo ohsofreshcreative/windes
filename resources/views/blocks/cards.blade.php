@@ -8,51 +8,76 @@ $sectionClass .= $lightbg ? ' section-light' : '';
 $sectionClass .= $graybg ? ' section-gray' : '';
 $sectionClass .= $whitebg ? ' section-white' : '';
 $sectionClass .= $brandbg ? ' section-brand' : '';
+$sectionClass .= $darkbg ? ' section-dark' : '';
 @endphp
 
 <section data-gsap-anim="section" class="cards -smt {{ $sectionClass }}">
 	<div class="__wrapper c-main">
 		<div class="">
 
-			@if (!empty($tiles['title']))
-			<h2 class="mb-10">{{ strip_tags($tiles['title']) }}</h2>
+			<div class="relative grid grid-cols-1 lg:grid-cols-[1fr_2fr] items-center">
+				<div class="__content">
+					<h2 class="m-header">{{ strip_tags($g_cards['header']) }}</h2>
+					<p>{{ $g_cards['text'] }}</p>
+				</div>
+
+				@if (!empty($g_photos))
+				<div class="__photos relative z-9">
+					@if (!empty($g_photos['image1']))
+					<div data-gsap-element="image" class="__img1">
+						<img class="object-cover w-full __img img-xl radius-img"
+							src="{{ $g_photos['image1']['url'] }}"
+							alt="{{ $g_photos['image1']['alt'] ?? '' }}">
+					</div>
+					@endif
+					@if (!empty($g_photos['image2']))
+					<div data-gsap-element="image" class="__img2">
+						<img class="radius-img"
+							src="{{ $g_photos['image2']['url'] }}"
+							alt="{{ $g_photos['image2']['alt'] ?? '' }}">
+					</div>
+					@endif
+					@if (!empty($g_photos['image3']))
+					<div data-gsap-element="image" class="__img3">
+						<img class="radius-img"
+							src="{{ $g_photos['image3']['url'] }}"
+							alt="{{ $g_photos['image3']['alt'] ?? '' }}">
+					</div>
+					@endif
+				</div>
+				@endif
+
+				<div class="__glow">
+				</div>
+			</div>
+
+			@if (!empty($r_cards))
+			@php
+			$itemCount = count($r_cards);
+			$gridCols = 1;
+			if ($itemCount == 2) $gridCols = 2;
+			if ($itemCount == 3) $gridCols = 3;
+			if ($itemCount >= 4) $gridCols = 4; // Twój dotychczasowy warunek
+			$gridClass = $gridCols > 1 ? 'grid-cols-1 lg:grid-cols-' . $gridCols : 'grid-cols-1';
+			@endphp
+
+			<div class="grid {{ $gridClass }} gap-8 mt-10">
+				@foreach ($r_cards as $item)
+				<div class="__card relative bg-dark radius border-p p-8">
+					@if (!empty($item['image']['url']))
+					<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+					@endif
+					@if (!empty($item['title']))
+					<h6 class="mb-4">{{ $item['title'] }}</h6>
+					@endif
+					@if (!empty($item['text']))
+					<p class="">{{ $item['text'] }}</p>
+					@endif
+				</div>
+				@endforeach
+			</div>
 			@endif
-
-			@if (!empty($tiles['repeater']))
-    @php
-        $itemCount = count($tiles['repeater']);
-        $gridCols = $itemCount;
-
-        if ($itemCount == 4) {
-            $gridCols = 2;
-        } elseif ($itemCount > 4) {
-            $gridCols = 2; // Or handle it differently if there are more than 4 items
-        }
-
-        $gridClass = 'grid-cols-1'; // Default to 1 column
-        if ($gridCols > 1) {
-            $gridClass = 'grid-cols-1 lg:grid-cols-' . $gridCols;
-        }
-    @endphp
-
-    <div class="grid {{ $gridClass }} gap-8">
-        @foreach ($tiles['repeater'] as $item)
-            <div class="__card relative b-border p-8">
-                <img class="mb-6" src="{{ $item['card_image']['url'] }}" alt="{{ $item['card_image']['alt'] ?? '' }}" />
-                <h6 class="m-header">{{ $item['card_title'] }}</h6>
-                <p class="">{{ $item['card_txt'] }}</p>
-
-                <div class="absolute top-0 right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="87" height="87" viewBox="0 0 87 87" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M86.9104 86.6418V0.431902H0.700457L66.9906 19.8442L86.9104 86.6418Z" fill="#E30613" />
-                    </svg>
-                </div>
-            </div>
-        @endforeach
-    </div>
-@endif
 
 		</div>
 	</div>
-
 </section>

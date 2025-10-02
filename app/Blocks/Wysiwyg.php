@@ -5,14 +5,14 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class TextImage extends Block
+class Wysiwyg extends Block
 {
-	public $name = 'Treść oraz zdjęcie';
-	public $description = 'textimg';
-	public $slug = 'textimg';
+	public $name = 'Edytor treści';
+	public $description = 'wysiwyg';
+	public $slug = 'wysiwyg';
 	public $category = 'formatting';
-	public $icon = 'align-pull-left';
-	public $keywords = ['tresc', 'zdjecie'];
+	public $icon = 'format-aside';
+	public $keywords = ['tresc', 'edytor'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -24,28 +24,23 @@ class TextImage extends Block
 
 	public function fields()
 	{
-		$textimg = new FieldsBuilder('textimg');
+		$wysiwyg = new FieldsBuilder('wysiwyg');
 
-		$textimg
-			->setLocation('block', '==', 'acf/textimg') // ważne!
+		$wysiwyg
+			->setLocation('block', '==', 'acf/wysiwyg') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Treść oraz zdjęcie',
+				'label' => 'Edytor treści',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('g_textimg', ['label' => ''])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'medium',
-			])
-			->addText('title', ['label' => 'Tytuł'])
+			->addGroup('g_wysiwyg', ['label' => ''])
+			->addText('header', ['label' => 'Nagłówek'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
 				'tabs' => 'all', // 'visual', 'text', 'all'
@@ -91,55 +86,36 @@ class TextImage extends Block
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
 			])
-			->addTrueFalse('lightbg', [
-				'label' => 'Jasne tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('graybg', [
-				'label' => 'Szare tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('whitebg', [
-				'label' => 'Białe tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('brandbg', [
-				'label' => 'Tło marki',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('darkbg', [
-				'label' => 'Ciemne tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
+			->addSelect('bg', [
+				'label' => 'Tło sekcji',
+				'choices' => [
+					'x' => '— brak —',
+					'light' => 'Jasne tło',
+					'gray' => 'Szare tło',
+					'white' => 'Białe tło',
+					'brand' => 'Tło marki',
+					'dark' => 'Ciemne tło',
+				],
+				'default_value' => '',
+				'allow_null'    => 0,
+				'multiple'      => 0,
+				'ui'            => 1,
 			]);
 
-		return $textimg;
+		return $wysiwyg;
 	}
 
 	public function with()
 	{
 		return [
-			'g_textimg' => get_field('g_textimg'),
+			'g_wysiwyg' => get_field('g_wysiwyg'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),
 			'wide' => get_field('wide'),
 			'nomt' => get_field('nomt'),
 			'gap' => get_field('gap'),
-			'lightbg' => get_field('lightbg'),
-			'graybg' => get_field('graybg'),
-			'whitebg' => get_field('whitebg'),
-			'brandbg' => get_field('brandbg'),
-			'darkbg' => get_field('darkbg'),
+			'bg' => get_field('bg'),
 		];
 	}
 }

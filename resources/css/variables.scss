@@ -127,10 +127,11 @@ body {
   --bg-dark: #12141A;
   --bg-p-light: var(--p-300);
   --bg-p-lighter: var(--p-200);
+  --bg-p-bright: #EFE4D5;
   --bg-s-light: var(--s-300);
   --bg-s-lighter: #F5FBFF;
 
-  --border-p: var(--p-300);
+  --border-p: var(--primary);
   --border-p-light: var(--p-200);
   --border-p-dark: var(--p-800);
   --border-s: var(--s-300);
@@ -139,7 +140,7 @@ body {
   --header: 'Noto Serif Display', serif;
   --txt: "Lato", sans-serif;
   --btns-font: "Lato", sans-serif;
-  
+
   --smt: 104px;
   --spt: 104px;
   --menu-height: 104px !important;
@@ -154,7 +155,7 @@ body {
 
   --section-gap: 40px;
   --m-title: 16px;
-  --m-header: 40px;
+  --m-header: 24px;
   --m-btn: 32px;
   --m-img: 40px;
   --radius: 8px;
@@ -352,7 +353,7 @@ body {
   ul,
   ul li,
   .accordion-label {
-    color: #fff !important;
+    color: #fff;
   }
 }
 
@@ -432,14 +433,21 @@ a {
   margin-right: 8px;
 }
 
-h1, .text-h1,
-h2,	.text-h2,
-h3, .text-h3,
-h4, .text-h4,
-h5, .text-h5,
-h6, .text-h6 {
+h1,
+.text-h1,
+h2,
+.text-h2,
+h3,
+.text-h3,
+h4,
+.text-h4,
+h5,
+.text-h5,
+h6,
+.text-h6 {
   font-family: var(--header);
-  color: var(--body);font-weight: 600; 
+  color: var(--body);
+  font-weight: 600;
 }
 
 .big {
@@ -450,13 +458,13 @@ h6, .text-h6 {
 h1,
 .text-h1 {
   font-size: 72px !important;
-  line-height: 4.5rem;
+  line-height: 5.5rem;
 }
 
 h2,
 .text-h2 {
   font-size: 60px !important;
-  line-height: 4rem;
+  line-height: 5rem;
 }
 
 h3,
@@ -484,7 +492,7 @@ h6,
 }
 
 .title {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .title::before {
@@ -493,8 +501,8 @@ h6,
   width: 0.75em;
   height: 0.75em;
   margin-right: 0.5em;
-  background-color: var(--text-p-light); 
-  border-radius: 0px; 
+  background-color: var(--text-p-light);
+  border-radius: 0px;
 }
 
 .text-underline {
@@ -537,7 +545,7 @@ h6,
 }
 
 .primary {
-  color: var(--primary);
+  color: var(--primary) !important;
 }
 
 .secondary {
@@ -558,6 +566,10 @@ h6,
 
 .bg-p-lighter {
   background-color: var(--bg-p-lighter);
+}
+
+.bg-p-bright {
+  background-color: var(--bg-p-bright);
 }
 
 .bg-secondary {
@@ -593,7 +605,7 @@ h6,
 }
 
 .bg-dark {
-  background-color: var(--s-800) !important;
+  background-color: var(--bg-dark) !important;
 }
 
 .bg-white {
@@ -609,6 +621,10 @@ h6,
 }
 
 /*--- !BORDER & SHADOW ---*/
+
+.radius {
+  border-radius: var(--radius) !important;
+}
 
 .radius-img {
   border-radius: var(--radius) !important;
@@ -628,6 +644,18 @@ h6,
 
 .border-s-light {
   border: 1px solid var(--border-s-light) !important;
+}
+
+.border-top-p {
+  border-top: 1px solid var(--border-p) !important;
+}
+
+.border-right-p {
+  border-right: 1px solid var(--border-p) !important;
+}
+
+.__card.border-right-p:last-child {
+  border-right: none !important;
 }
 
 .b-border-l {
@@ -674,6 +702,7 @@ h6,
   text-decoration: none;
   white-space: nowrap;
   width: max-content;
+  height: max-content;
 }
 
 .main-btn:hover {
@@ -1072,7 +1101,7 @@ textarea {
   padding: 12px 16px;
   transition: all 0.2s ease-out;
   border-radius: 4px;
-  font-size:16px;
+  font-size: 16px;
 }
 
 input::placeholder,
@@ -1287,6 +1316,21 @@ article.post:hover img {
 /*--- !SINGLE ---*/
 
 .single-post {
+
+  .wysiwyg,
+  .cta {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .wysiwyg {
+    h3:first-child {
+      font-size: 30px !important;
+      margin-top: 0px;
+      margin-bottom: 8px;
+    }
+  }
+
   .__content {
     ol {
       list-style: auto;
@@ -1296,6 +1340,7 @@ article.post:hover img {
   }
 
   .__entry {
+
     h2 {
       font-size: 36px !important;
       margin-top: 24px;
@@ -1328,21 +1373,11 @@ article.post:hover img {
     .image .c-main {
       padding: 0 !important;
     }
-
-    .cta {
-      margin-top: 56px !important;
-      margin-bottom: 56px;
-    }
   }
 
   .related-posts {
     border-top: 1px solid var(--border);
   }
-}
-
-/*--- !IMAGE ---*/
-.image.tmp {
-  margin-top: 40px !important;
 }
 
 /*--- !CTA - STOPKA ---*/
@@ -1369,9 +1404,10 @@ article.post:hover img {
 }
 
 .footer {
-	.text-2.widget_text {
-		margin-bottom:40px;
-	}
+  .text-2.widget_text {
+    margin-bottom: 40px;
+  }
+
   .__widgets {
     grid-template-columns: repeat(4, 1fr);
 
@@ -1483,8 +1519,7 @@ article.post:hover img {
 
 /*---- XL --*/
 @media only screen and (max-width: 1280px) {
-  :root {
-  }
+  :root {}
 }
 
 /*---- LG --*/
@@ -1535,6 +1570,15 @@ article.post:hover img {
   .inline-buttons a {
     width: 100% !important;
     text-align: center !important;
+  }
+
+  .single-post {
+
+    .wysiwyg,
+    .cta {
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 }
 

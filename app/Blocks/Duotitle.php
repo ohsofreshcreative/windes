@@ -40,11 +40,38 @@ class Duotitle extends Block
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_duotitle', ['label' => ''])
+			->addRadio('media_type', [
+				'label' => 'Typ media',
+				'choices' => [
+					'image' => 'Obraz',
+					'video' => 'Wideo (plik)',
+				],
+				'default_value' => 'image',
+				'layout' => 'horizontal',
+			])
+
 			->addImage('image', [
 				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
+				'return_format' => 'array',
 				'preview_size' => 'medium',
+				'conditional_logic' => [[[
+					'field' => 'media_type',
+					'operator' => '==',
+					'value' => 'image',
+				]]],
 			])
+
+			->addFile('video_file', [
+				'label' => 'Wideo (plik)',
+				'return_format' => 'array',
+				'mime_types' => 'mp4,webm,ogv',
+				'conditional_logic' => [[[
+					'field' => 'media_type',
+					'operator' => '==',
+					'value' => 'video',
+				]]],
+			])
+
 			->addText('title', ['label' => 'Tytuł'])
 			->addText('header1', ['label' => 'Nagłówek - ciemny'])
 			->addText('header2', ['label' => 'Nagłówek - jasny'])

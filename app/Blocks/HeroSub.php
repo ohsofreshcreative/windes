@@ -43,12 +43,15 @@ class HeroSub extends Block
 				'preview_size' => 'medium',
 				'required' => 1,
 			])
-			->addText('subtitle', [
-				'label' => 'Śródtytuł',
-			])
-			->addText('title', [
+			->addText('header', [
 				'label' => 'Tytuł',
 				'required' => 1,
+			])
+			->addTextarea('txt', [
+				'label' => 'Opis',
+				'rows' => 4,
+				'placeholder' => 'Wpisz opis...',
+				'new_lines' => 'br',
 			])
 
 			->endGroup()

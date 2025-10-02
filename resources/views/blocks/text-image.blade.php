@@ -8,6 +8,7 @@ $sectionClass .= $lightbg ? ' section-light' : '';
 $sectionClass .= $graybg ? ' section-gray' : '';
 $sectionClass .= $whitebg ? ' section-white' : '';
 $sectionClass .= $brandbg ? ' section-brand' : '';
+$sectionClass .= $darkbg ? ' section-dark' : '';
 
 @endphp
 
