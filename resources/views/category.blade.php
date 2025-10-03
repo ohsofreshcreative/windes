@@ -1,82 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-@php
-$term = get_queried_object();
-$title = $term ? get_field('title', 'category_' . $term->term_id) : null;
-$txt = $term ? get_field('txt', 'category_' . $term->term_id) : null;
-$image = $term ? get_field('image', 'category_' . $term->term_id) : null;
 
-// Fetch all categories
-$categories = get_categories();
-
-// Get the current category URL
-$current_category_url = $term ? get_category_link($term->term_id) : home_url(); // Fallback to home URL if not a category archive
-
-@endphp
-
-<section data-gsap-anim="section" class="bg-gradient relative overflow-hidden">
-	<div class="__wrapper c-main py-60">
-
-		<div class="w-full sm:w-3/4 relative z-10">
-			<p data-gsap-element="subheader" class="subtitle-p">Baza wiedzy</p>
-			<h1 data-gsap-element="header" class=" text-white">{!! category_description() !!}</h1>
+<div class="hero category-header" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%), linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%), url('{{ $category_image['url'] }}');">
+	<div class="__wrapper c-main pt-60 pb-26">
+		<div class="__content w-full md:w-2/3">
+			<h1 class=" text-white">
+				{!! get_the_archive_title() !!}
+			</h1>
+			<a data-gsap-element="btn" href="#" class="js-scroll-to-next block m-btn">
+				<div class="__arrow bg-primary">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none">
+						<path d="M10.7383 22.7454L19.4181 14.0655C19.8264 13.6572 19.8265 12.9932 19.4183 12.585C19.0101 12.1768 18.3461 12.1768 17.9378 12.5851L11.0484 19.4744L11.0476 1.99787C11.0474 1.41913 10.5788 0.95049 10 0.950244C9.42127 0.950596 8.95255 1.41932 8.9522 1.99806L8.953 19.4752L2.06463 12.5869C1.65641 12.1786 0.99242 12.1787 0.584122 12.587C0.175823 12.9953 0.175763 13.6593 0.583987 14.0675L9.25988 22.7434C9.666 23.1537 10.33 23.1537 10.7383 22.7454Z" fill="white" />
+					</svg>
+				</div>
+			</a>
 		</div>
 	</div>
-	<img class="absolute mix-blend-overlay -top-20 -right-80" src="/wp-content/uploads/2025/08/logo-stroke.svg" />
-</section>
-
-@if($featured_post)
-<div class="featured-post c-main relative z-10">
-	<a href="{{ get_permalink($featured_post) }}">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center  bg-white rounded-2xl p-10 -mt-40">
-
-			<div class="">
-				<div class="relative rounded-2xl overflow-hidden aspect-[16/16] md:aspect-[21/12]">
-					{!! get_the_post_thumbnail($featured_post->ID, 'large', [
-					'class' => 'absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105',
-					'alt' => esc_attr(get_the_title($featured_post)),
-					]) !!}
-				</div>
-			</div>
-
-			<div class="flex flex-col justify-center">
-				<h2 class="!text-2xl md:!text-3xl mr-4 md:mr-10">
-					{{ get_the_title($featured_post) }}
-				</h2>
-
-				<div class="mt-6">
-					<div class="blog-btn bg-p-light rounded-full w-max">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
-							<path d="M22.7454 9.26177L14.0655 0.581915C13.6572 0.173617 12.9932 0.173556 12.585 0.581781C12.1768 0.990005 12.1768 1.65399 12.5851 2.06229L19.4744 8.95162L1.99787 8.95242C1.41912 8.95267 0.95049 9.4213 0.950243 10C0.950595 10.5788 1.41932 11.0475 1.99806 11.0479L19.4752 11.0471L12.5869 17.9354C12.1786 18.3437 12.1787 19.0076 12.587 19.4159C12.9953 19.8242 13.6593 19.8243 14.0675 19.4161L22.7434 10.7402C23.1537 10.3341 23.1536 9.67007 22.7454 9.26177Z" fill="#2B176A" />
-						</svg>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</a>
 </div>
-@endif
 
-<div class="-smt">
-	<div class="__wrapper c-main flex gap-4 overflow-x-scroll">
-		<a class="stroke-small-btn" href="/kategorie/wszystkie-wpisy/">Wszystkie wpisy</a>
-		@foreach($categories as $category)
-		@if($category->name !== 'Wszystkie wpisy')
-		<a class="stroke-small-btn" href="{{ get_category_link($category->term_id) }}" class="button {{ $term && $term->term_id === $category->term_id ? 'active' : '' }}">{{ $category->name }}</a>
-		@endif
-		@endforeach
-	</div>
-</div>
+<!-- 
+  <div class="-smt">
+    <div class="__wrapper c-main flex gap-4 overflow-x-scroll">
+      <a class="stroke-small-btn" href="/kategorie/wszystkie-wpisy/">Wszystkie wpisy</a>
+      @foreach($categories as $category)
+      @if($category->name !== 'Wszystkie wpisy')
+      <a class="stroke-small-btn" href="{{ get_category_link($category->term_id) }}" class="button {{ $term && $term->term_id === $category->term_id ? 'active' : '' }}">{{ $category->name }}</a>
+      @endif
+      @endforeach
+    </div>
+  </div> 
+  -->
 
 @if (have_posts())
- <div class="c-main pb-25 !mt-10 posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    @while (have_posts()) @php(the_post())
-      @continue($featured_post && (int) get_the_ID() === (int) $featured_post->ID)
-      @includeFirst(['partials.content', 'partials.content'])
-    @endwhile
-  </div>
+<div class="c-main pb-25 !mt-10 posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+	@while (have_posts()) @php(the_post())
+	{{-- Dobrą praktyką jest używanie pełnej ścieżki Sage do ładowania partiali --}}
+	@includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+	@endwhile
+</div>
+
 {!! get_the_posts_navigation() !!}
 @else
 <div class="mt-20 mb-20">
@@ -87,3 +50,14 @@ $current_category_url = $term ? get_category_link($term->term_id) : home_url(); 
 </div>
 @endif
 @endsection
+
+<style>
+	.category-header {
+		background-image:
+			linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%),
+			linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%),
+			var(--bg-image);
+		background-size: cover;
+		background-position: center;
+	}
+</style>

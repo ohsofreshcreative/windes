@@ -5,12 +5,12 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Contact extends Block
+class Connect extends Block
 
 {
-	public $name = 'Kontakt - Footer';
-	public $description = 'Contact';
-	public $slug = 'contact';
+	public $name = 'Kontakt - Podstrona';
+	public $description = 'connect';
+	public $slug = 'connect';
 	public $category = 'formatting';
 	public $icon = 'email';
 	public $keywords = ['formularz', 'kontakt'];
@@ -25,44 +25,41 @@ class Contact extends Block
 
 	public function fields()
 	{
-		$contact = new FieldsBuilder('contact');
+		$connect = new FieldsBuilder('connect');
 
-		$contact
-			->setLocation('block', '==', 'acf/contact') // ważne!
+		$connect
+			->setLocation('block', '==', 'acf/connect') // ważne!
 			/*--- FIELDS ---*/
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Kontakt - Footer',
+				'label' => 'Kontakt - Podstrona',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- TAB #1 ---*/
 			->addTab('Dane', ['placement' => 'top'])
-			->addGroup('g_contact_1', ['label' => ''])
+			->addGroup('g_connect_1', ['label' => ''])
 			->addText('header', ['label' => 'Tytuł'])
-			->addWysiwyg('txt', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
-			])
+			->addText('phone', ['label' => 'Telefon'])
+			->addText('email', ['label' => 'Email'])
+			->addText('address', ['label' => 'Adres'])
 			->addImage('image', [
-				'label' => 'Obraz',
+				'label' => 'Obraz w tle',
 				'return_format' => 'array',
 				'preview_size' => 'medium',
 			])
 			->endGroup()
 			/*--- TAB #2 ---*/
 			->addTab('Formularz', ['placement' => 'top'])
-			->addGroup('g_contact_2', ['label' => ''])
+			->addGroup('g_connect_2', ['label' => ''])
 			->addText('title', ['label' => 'Tytuł'])
 			->addText('shortcode', [
 				'label' => 'Kod formularza',
-				'instructions' => 'Wklej kod formularza:  [contact-form-7 id="f12c470" title="Contact form 1"]',
-				'default_value' => '[contact-form-7 id="f12c470" title="Contact form 1"]',
+				'instructions' => 'Wklej kod formularza:  [connect-form-7 id="f12c470" title="connect form 1"]',
+				'default_value' => '[connect-form-7 id="f12c470" title="connect form 1"]',
 			])
 			->endGroup()
 
@@ -77,14 +74,14 @@ class Contact extends Block
 			]);
 
 
-		return $contact;
+		return $connect;
 	}
 
 	public function with()
 	{
 		return [
-			'g_contact_1' => get_field('g_contact_1'),
-			'g_contact_2' => get_field('g_contact_2'),
+			'g_connect_1' => get_field('g_connect_1'),
+			'g_connect_2' => get_field('g_connect_2'),
 			'tiles' => get_field('tiles'),
 			'flip' => get_field('flip'),
 			'lightbg' => get_field('lightbg'),

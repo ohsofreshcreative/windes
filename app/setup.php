@@ -169,22 +169,80 @@ add_action('widgets_init', function () {
 	] + $defaultConfig);
 });
 
+/*--- CATEGORY IMAGE ---*/
+
+/**
+ * Register the ACF fields for Category taxonomy.
+ */
+add_action('acf/init', function () {
+	if (function_exists('acf_add_local_field_group')) {
+		acf_add_local_field_group([
+			'key' => 'group_category_settings',
+			'title' => 'Ustawienia Kategorii',
+			'fields' => [
+				[
+					'key' => 'field_category_image',
+					'label' => 'Zdjęcie Kategorii',
+					'name' => 'category_image',
+					'type' => 'image',
+					'instructions' => 'Dodaj obrazek, który będzie wyświetlany jako tło lub nagłówek dla tej kategorii.',
+					'return_format' => 'array', // Zwraca tablicę z danymi obrazka (url, alt, etc.)
+					'preview_size' => 'medium',
+					'library' => 'all',
+				],
+			],
+			'location' => [
+				[
+					[
+						'param' => 'taxonomy',
+						'operator' => '==',
+						'value' => 'category', // Celujemy w taksonomię "category"
+					],
+				],
+			],
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'active' => true,
+		]);
+	}
+});
+
+/**
+ * Remove archive title prefix (e.g., "Category:", "Tag:").
+ */
+add_filter('get_the_archive_title', function ($title) {
+    if (is_category()) {
+        $title = single_cat_title('', false);
+    } elseif (is_tag()) {
+        $title = single_tag_title('', false);
+    } elseif (is_author()) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif (is_post_type_archive()) {
+        $title = post_type_archive_title('', false);
+    } elseif (is_tax()) {
+        $title = single_term_title('', false);
+    }
+
+    return $title;
+});
 
 /*--- GSAP ---*/
 
 add_action('wp_enqueue_scripts', function () {
-    /**
-     * Rejestracja i ładowanie skryptów.
-     */
+	/**
+	 * Rejestracja i ładowanie skryptów.
+	 */
 
-    // Ładuj GSAP i ScrollTrigger z CDN.
-    // Trzeci argument (tablica []) oznacza brak zależności.
-    // Piąty argument (true) umieszcza skrypty w stopce.
-    wp_enqueue_script('gsap-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', [], null, true);
-    
-    // Ustawiamy zależność 'gsap-st-cdn' od 'gsap-cdn', aby załadowały się w dobrej kolejności.
-    wp_enqueue_script('gsap-st-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', ['gsap-cdn'], null, true);
+	// Ładuj GSAP i ScrollTrigger z CDN.
+	// Trzeci argument (tablica []) oznacza brak zależności.
+	// Piąty argument (true) umieszcza skrypty w stopce.
+	wp_enqueue_script('gsap-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', [], null, true);
 
+	// Ustawiamy zależność 'gsap-st-cdn' od 'gsap-cdn', aby załadowały się w dobrej kolejności.
+	wp_enqueue_script('gsap-st-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', ['gsap-cdn'], null, true);
 }, 1); // Ustawiamy priorytet na 1, aby wykonało się BARDZO wcześnie.
 
 /*-- CAREER MODAL ---*/
@@ -210,4 +268,3 @@ add_action('wp_footer', function () {
     </div>
     ';
 });
-
