@@ -45,7 +45,17 @@ class Connect extends Block
 			->addText('header', ['label' => 'Tytuł'])
 			->addText('phone', ['label' => 'Telefon'])
 			->addText('email', ['label' => 'Email'])
-			->addText('address', ['label' => 'Adres'])
+			->addText('name', ['label' => 'Nazwa firmy'])
+			->addTextarea('address', [
+				'label' => 'Adres',
+				'rows' => 4,
+				'new_lines' => 'br',
+			])
+			->addTextarea('data', [
+				'label' => 'Nip, Regon',
+				'rows' => 4,
+				'new_lines' => 'br',
+			])
 			->addImage('image', [
 				'label' => 'Obraz w tle',
 				'return_format' => 'array',

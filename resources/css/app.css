@@ -29,6 +29,8 @@
 @import '../css/blocks/inspirations.scss';
 @import '../css/blocks/about.scss';
 @import '../css/blocks/wysiwyg.scss';
+@import '../css/blocks/connect.scss';
+@import '../css/blocks/coop.scss';
 
 @import 'swiper/css';
 @import 'swiper/css/navigation';

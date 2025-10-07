@@ -90,32 +90,32 @@ body {
 /*--- !ROOT ---*/
 
 :root {
-  --body: #12141A !important;
-  --primary: #A08667;
-  --p-hover: #C0AE9A;
-  --p-100: #ECE7E0;
-  --p-200: #DFD7CC;
-  --p-300: #CFC2B3;
-  --p-400: #C0AE9A;
-  --p-500: #B09A80;
+  --body: #12141a !important;
+  --primary: #a08667;
+  --p-hover: #c0ae9a;
+  --p-100: #ece7e0;
+  --p-200: #dfd7cc;
+  --p-300: #cfc2b3;
+  --p-400: #c0ae9a;
+  --p-500: #b09a80;
   --p-600: #857056;
-  --p-700: #6B5945;
+  --p-700: #6b5945;
   --p-800: #504333;
-  --p-900: #352D22;
-  --p-dark: #201B15;
+  --p-900: #352d22;
+  --p-dark: #201b15;
 
-  --secondary: #2F3D4E;
-  --s-hover: #6982A0;
-  --s-100: #BED5F1;
-  --s-200: #A8C1E0;
-  --s-300: #89A2C1;
-  --s-400: #6982A0;
-  --s-500: #4F6887;
+  --secondary: #2f3d4e;
+  --s-hover: #6982a0;
+  --s-100: #bed5f1;
+  --s-200: #a8c1e0;
+  --s-300: #89a2c1;
+  --s-400: #6982a0;
+  --s-500: #4f6887;
   --s-600: #273341;
-  --s-700: #1F2934;
-  --s-800: #171E27;
-  --s-900: #10141A;
-  --s-dark: #090C10;
+  --s-700: #1f2934;
+  --s-800: #171e27;
+  --s-900: #10141a;
+  --s-dark: #090c10;
 
   --text-p-light: var(--p-400);
   --text-p-lighter: var(--p-200);
@@ -123,13 +123,13 @@ body {
   --text-s-lighter: var(--s-100);
 
   --gray: #63656a;
-  --bg: #FCF6F0;
-  --bg-dark: #12141A;
+  --bg: #fcf6f0;
+  --bg-dark: #12141a;
   --bg-p-light: var(--p-300);
   --bg-p-lighter: var(--p-200);
-  --bg-p-bright: #EFE4D5;
+  --bg-p-bright: #efe4d5;
   --bg-s-light: var(--s-300);
-  --bg-s-lighter: #F5FBFF;
+  --bg-s-lighter: #f5fbff;
 
   --border-p: var(--primary);
   --border-p-light: var(--p-200);
@@ -138,8 +138,8 @@ body {
   --border-s-light: var(--s-200);
 
   --header: 'Noto Serif Display', serif;
-  --txt: "Lato", sans-serif;
-  --btns-font: "Lato", sans-serif;
+  --txt: 'Lato', sans-serif;
+  --btns-font: 'Lato', sans-serif;
 
   --smt: 104px;
   --spt: 104px;
@@ -352,8 +352,12 @@ body {
   i,
   ul,
   ul li,
+  a,
   .accordion-label {
     color: #fff;
+  }
+  a:hover {
+	color:var(--p-300);
   }
 }
 
@@ -496,7 +500,7 @@ h6,
 }
 
 .title::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 0.75em;
   height: 0.75em;
@@ -974,7 +978,7 @@ h6,
 
 #mobile-menu-panel {
   li a {
-    color: #FFF;
+    color: #fff;
     font-size: 20px;
     font-weight: 300;
   }
@@ -985,80 +989,6 @@ h6,
 }
 
 /*--- !BLOCKS ---*/
-
-/*--- HERO SECOND ---*/
-
-.hero-second {
-  svg.__shape {
-    filter: blur(50px);
-    opacity: 0.5;
-  }
-}
-
-/*--- HOME ABOUT ---*/
-
-.home-about {
-  margin-top: -104px;
-
-  .__img {
-    max-height: 600px;
-  }
-}
-
-/*--- !TWO COLS ---*/
-
-.two-cols {
-  .__content ul {
-    list-style: none;
-    padding-left: 0;
-
-    li {
-      position: relative;
-      padding-left: 1.5em;
-      border-bottom: 1px solid var(--border-light);
-      width: fit-content;
-      margin-bottom: 8px;
-      padding-bottom: 8px;
-    }
-
-    li:last-child {
-      border-bottom: 0;
-      margin-bottom: 0px;
-      padding-bottom: 0px;
-    }
-
-    li:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 15px;
-      height: 14px;
-      background-image: url('http://windes.local/wp-content/uploads/2025/05/check.svg');
-      background-size: cover;
-      transform: translateY(-50%);
-    }
-  }
-
-  .__first {
-    border-right: 1px solid var(--border);
-  }
-}
-
-/*--- !PROCES ---*/
-
-.proces {
-  .__content {
-    min-height: 96px;
-  }
-
-  .__line {
-    content: '';
-    height: 1px;
-    width: 100%;
-    bottom: 16px;
-  }
-}
 
 /*--- !FORM ---*/
 
@@ -1127,7 +1057,7 @@ textarea {
 input[type='submit'] {
   font-size: 16px;
   background: var(--secondary);
-  color: #FFF;
+  color: #fff;
   padding: 15px 45px;
   display: inline-block;
   transition: all 0.2s ease-out;
@@ -1229,42 +1159,6 @@ input[type='checkbox'] {
   }
 }
 
-/*--- !CONTACT ---*/
-
-.contact {
-  strong {
-    font-size: 24px;
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .__phone::before {
-    content: url('http://windes.local/wp-content/uploads/2025/06/phone.svg');
-    margin-right: 16px;
-    position: relative;
-    top: 4px;
-  }
-
-  .__mail::before {
-    content: url('http://windes.local/wp-content/uploads/2025/06/mail.svg');
-    margin-right: 16px;
-    position: relative;
-    top: 4px;
-  }
-
-  .__form {
-    label {
-      margin-top: 24px;
-      display: block;
-    }
-
-    .wpcf7 form .wpcf7-response-output {
-      color: var(--body);
-      width: max-content;
-    }
-  }
-}
-
 /*--- !MAP ---*/
 
 .map {
@@ -1316,7 +1210,6 @@ article.post:hover img {
 /*--- !SINGLE ---*/
 
 .single-post {
-
   .wysiwyg,
   .cta {
     width: 75%;
@@ -1340,7 +1233,6 @@ article.post:hover img {
   }
 
   .__entry {
-
     h2 {
       font-size: 36px !important;
       margin-top: 24px;
@@ -1514,12 +1406,14 @@ article.post:hover img {
 
 /*---- 2XL --*/
 @media only screen and (max-width: 1536px) {
-  :root {}
+  :root {
+  }
 }
 
 /*---- XL --*/
 @media only screen and (max-width: 1280px) {
-  :root {}
+  :root {
+  }
 }
 
 /*---- LG --*/
@@ -1573,7 +1467,6 @@ article.post:hover img {
   }
 
   .single-post {
-
     .wysiwyg,
     .cta {
       width: 100%;
