@@ -104,3 +104,7 @@ add_filter('sage/acf-composer/fields', fn () => [
 ]);
 
 
+/*--- APP PHP FILES ---*/
+array_walk(glob(get_template_directory() . '/app/*.php'), function ($file) {
+    require_once $file;
+});

@@ -356,8 +356,9 @@ body {
   .accordion-label {
     color: #fff;
   }
+
   a:hover {
-	color:var(--p-300);
+    color: var(--p-300);
   }
 }
 
@@ -917,11 +918,9 @@ h6,
 
 .inline-buttons {
   display: flex;
+  gap: 16px;
 }
 
-.inline-buttons .left-btn {
-  margin-right: 16px;
-}
 
 /*--- !MENU  ---*/
 
@@ -1210,6 +1209,7 @@ article.post:hover img {
 /*--- !SINGLE ---*/
 
 .single-post {
+
   .wysiwyg,
   .cta {
     width: 75%;
@@ -1286,6 +1286,69 @@ article.post:hover img {
     margin-right: 16px;
     position: relative;
     top: 4px;
+  }
+}
+
+/*--- !WOOCOMMERCE ---*/
+
+/*--- !SHOP PAGE ---*/
+.woocommerce-shop {
+  .products {
+    .woocommerce-loop-category__title {
+      font-size: 20px !important;
+      line-height: 1.5em;
+      text-align: center;
+      font-family: var(--txt);
+      font-weight: normal;
+
+      mark {
+        display: none !important;
+      }
+    }
+  }
+}
+
+/*--- !SINGLE PRODUCT ---*/
+.single-product {
+  .shop-btn {
+    font-family: var(--btns-font);
+    font-size: var(--btns-fontsize);
+    background: transparent;
+    color: #fff;
+    padding: var(--btns-padding);
+    padding-left: 24px !important;
+    display: inline-block;
+    transition: all 0.2s ease-out;
+    font-weight: 600;
+    border: 2px dotted var(--border-p);
+    border-radius: var(--btns-radius);
+    text-decoration: none;
+    white-space: nowrap;
+    width: max-content;
+    height: max-content;
+  }
+
+  .shop-btn:hover {
+    background: var(--primary);
+  }
+
+  .shop-btn::before {
+    content: url('http://windes.local/wp-content/uploads/2025/10/cart.svg');
+    margin-right: 8px;
+    position: relative;
+    top: 2px;
+    width: 20px;
+    height: 18px;
+    border-radius: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    display: inline;
+  transition: all 0.2s ease-out;
+  }
+
+  .shop-btn:hover::before {
+    background-color: var(--p-400);
+  transition: all 0.2s ease-out;
   }
 }
 
@@ -1406,14 +1469,12 @@ article.post:hover img {
 
 /*---- 2XL --*/
 @media only screen and (max-width: 1536px) {
-  :root {
-  }
+  :root {}
 }
 
 /*---- XL --*/
 @media only screen and (max-width: 1280px) {
-  :root {
-  }
+  :root {}
 }
 
 /*---- LG --*/
@@ -1467,6 +1528,7 @@ article.post:hover img {
   }
 
   .single-post {
+
     .wysiwyg,
     .cta {
       width: 100%;

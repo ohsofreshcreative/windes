@@ -62,7 +62,16 @@ add_filter('theme_file_path', function ($path, $file) {
  *
  * @return void
  */
+
 add_action('after_setup_theme', function () {
+
+	// Dodaj wsparcie dla WooCommerce
+	add_theme_support('woocommerce');
+	add_theme_support('wc-product-gallery-zoom');
+	add_theme_support('wc-product-gallery-lightbox');
+	add_theme_support('wc-product-gallery-slider');
+
+	
 	/**
 	 * Disable full-site editing support.
 	 *
@@ -129,6 +138,16 @@ add_action('after_setup_theme', function () {
 	 */
 	add_theme_support('customize-selective-refresh-widgets');
 }, 20);
+
+/*--- WOOCOMMERCE PHP FILES ---*/
+
+array_map(function ($file) {
+  require_once $file;
+}, array_merge(
+  glob(get_theme_file_path('app/Woo/*.php')) ?: [],
+  glob(get_theme_file_path('app/Woo/*/*.php')) ?: []
+));
+
 
 /**
  * Register the theme sidebars.

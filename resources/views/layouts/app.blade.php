@@ -26,7 +26,7 @@
 
 		@include('sections.header')
 
-		<main id="main" class="main -menu-mt">
+	<main id="main" class="main -menu-mt  @if (is_woocommerce() || is_cart() || is_checkout() || is_account_page())  @endif">
 			@yield('content')
 		</main>
 
