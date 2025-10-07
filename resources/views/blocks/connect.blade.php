@@ -36,11 +36,11 @@ url({$g_connect_1['image']['url']})" : '';
 				</div>
 			</div>
 
-			<div data-gsap-element="form" class="bg-dark  radius overflow-hidden p-10 mt-10">
-				<h5 class="text-white mb-6">Formularz kontaktowy</h5>
-				{!! do_shortcode($g_connect_2['shortcode']) !!}
-		<div class="__glow1"></div>
-		<div class="__glow2"></div>
+			<div data-gsap-element="form" class="__form bg-dark  radius overflow-hidden p-10 mt-10">
+				<h5 class="relative text-white mb-6 z-10">Formularz kontaktowy</h5>
+				<div class="relative z-10">{!! do_shortcode($g_connect_2['shortcode']) !!}</div>
+				<div class="__glow1"></div>
+				<div class="__glow2"></div>
 			</div>
 		</div>
 	</div>
