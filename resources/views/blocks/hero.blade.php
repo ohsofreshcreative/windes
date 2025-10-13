@@ -53,14 +53,14 @@ $sectionClass .= $flip ? ' order-flip' : '';
 			<form role="search"
       method="get"
       action="{{ home_url('/') }}"
-      class="mt-6 flex items-stretch gap-2 max-w-xl">
+      class="mt-6 flex items-stretch gap-2 max-w-xl p-2 radius" style="border:1px solid rgba(255,255,255,0.5); background:rgba(255,255,255,0.15); backdrop-blur-lg;">
 
   <label for="hero-search" class="sr-only">Szukaj produktów</label>
   <input id="hero-search"
          type="search"
          name="s"
          placeholder="Szukaj produktów…"
-         class="w-full rounded-xl px-4 py-3 text-base"
+         class="w-full rounded-xl px-4 py-3 text-white"
          required>
 
   {{-- ważne: zawęża wyniki do CPT "produkty" --}}

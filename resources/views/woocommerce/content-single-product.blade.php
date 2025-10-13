@@ -13,17 +13,22 @@ global $product;
 <!--- hero --->
 @include('partials.product-hero')
 
-<div class="c-main -smt">
-	<div class="__content">
-		<h1 class="c-product__title">{{ $product->get_name() }}</h1>
-		
-		@php $short_desc = apply_filters('woocommerce_short_description', $product->get_short_description()); @endphp
-		@if(!empty($short_desc))
-		<div class="c-product__excerpt">
-			{!! $short_desc !!}
-		</div>
-		@endif
-	</div>
-</div>
+<!--- about --->
+@include('partials.product-about')
+
+<!--- slider --->
+@include('partials.product-slider')
+
+<!--- usage --->
+@include('partials.product-usage')
+
+<!--- shop --->
+@include('partials.product-shop')
+
+<!--- downloads --->
+@include('partials.product-downloads')
+
+<!--- contact --->
+@include('partials.product-contact')
 
 @php do_action('woocommerce_after_single_product'); @endphp

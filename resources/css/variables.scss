@@ -643,6 +643,10 @@ h6,
   border: 1px solid var(--border-p-light) !important;
 }
 
+.border-p-dark {
+  border: 1px solid var(--border-p-dark) !important;
+}
+
 .border-s {
   border: 1px solid var(--border-s) !important;
 }
@@ -685,6 +689,10 @@ h6,
 
 .b-shadow:hover {
   box-shadow: 0px 8px 16px 0px rgba(20, 45, 74, 0.35);
+}
+
+.border-dashed {
+  border-style: dashed !important;
 }
 
 /*--- !BUTTONS ---*/
@@ -920,7 +928,6 @@ h6,
   display: flex;
   gap: 16px;
 }
-
 
 /*--- !MENU  ---*/
 
@@ -1209,7 +1216,6 @@ article.post:hover img {
 /*--- !SINGLE ---*/
 
 .single-post {
-
   .wysiwyg,
   .cta {
     width: 75%;
@@ -1308,6 +1314,10 @@ article.post:hover img {
   }
 }
 
+.woocommerce .products ul, .woocommerce ul.products {
+	margin-top:40px;
+}
+
 /*--- !SINGLE PRODUCT ---*/
 .single-product {
   .shop-btn {
@@ -1343,12 +1353,60 @@ article.post:hover img {
     padding: 12px;
     background-color: var(--primary);
     display: inline;
-  transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
   }
 
   .shop-btn:hover::before {
     background-color: var(--p-400);
-  transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+  }
+  .product-about {
+    .__glow {
+      top: 60%;
+      left: 0%;
+      width: 423px;
+      height: 423px;
+      flex-shrink: 0;
+      position: absolute;
+      border-radius: 423px;
+      background: linear-gradient(
+        315deg,
+        rgb(160, 134, 103, 0.2) 47.34%,
+        rgb(160, 134, 103, 0.2) 84.97%
+      );
+      filter: blur(75px);
+    }
+  }
+  .product-slider .swiper {
+    .swiper-slide {
+      min-height: 220px;
+    }
+    .__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgb(18, 20, 26, 0.3) 40%,
+        rgb(18, 20, 26) 100%
+      );
+    }
+    .__content {
+      position: relative;
+      z-index: 10;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: absolute;
+      width: calc(var(--swiper-navigation-size) / 44 * 27);
+      height: var(--swiper-navigation-size);
+      margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+    }
   }
 }
 
@@ -1469,12 +1527,14 @@ article.post:hover img {
 
 /*---- 2XL --*/
 @media only screen and (max-width: 1536px) {
-  :root {}
+  :root {
+  }
 }
 
 /*---- XL --*/
 @media only screen and (max-width: 1280px) {
-  :root {}
+  :root {
+  }
 }
 
 /*---- LG --*/
@@ -1528,7 +1588,6 @@ article.post:hover img {
   }
 
   .single-post {
-
     .wysiwyg,
     .cta {
       width: 100%;

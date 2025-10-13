@@ -6,6 +6,7 @@ add_action('acf/init', function () {
   acf_add_local_field_group([
     'key' => 'group_product_extras',
     'title' => 'Sekcja hero',
+	'menu_order' => 1,   
     'fields' => [
       [
         'key' => 'field_product_extras',

@@ -14,7 +14,7 @@ $mediaType = $g_duotitle['media_type'] ?? 'image';
 
 <!--- duotitle -->
 
-<section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="duotitle relative mt-40 {{ $sectionClass }} {{ $section_class }}">
+<section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="duotitle relative mt-20 {{ $sectionClass }} {{ $section_class }}">
 
 	<div class="__wrapper c-main">
 
@@ -22,7 +22,7 @@ $mediaType = $g_duotitle['media_type'] ?? 'image';
 			<h3 data-gsap-element="header" class="">{{ $g_duotitle['header1'] }}<span class="block text-white">{{ $g_duotitle['header2'] }}</span></h3>
 		</div>
 
-		<div class="__col grid grid-cols-1 lg:grid-cols-[2fr_1.5fr] items-center gap-10 z-10">
+		<div class="__col grid grid-cols-1 lg:grid-cols-[2fr_1.5fr] items-center gap-10 z-10" style="margin-top: -54px;">
 
 			@if ($mediaType === 'image' && !empty($g_duotitle['image']))
 			<div data-gsap-element="{{ $flip ? 'img-right' : 'img-left' }}" class="__img bottom-0">
