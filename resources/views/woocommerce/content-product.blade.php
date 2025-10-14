@@ -27,11 +27,11 @@ defined('ABSPATH') || exit;
       ->first();
   @endphp
 
- <!--  @if($parent_cat)
+{{--  @if($parent_cat)
     <div class="product-category">
       <a href="{{ get_term_link($parent_cat) }}">{{ $parent_cat->name }}</a>
     </div>
-  @endif -->
+  @endif --}}
 
   <h5 class="woocommerce-loop-product__title">
     <a href="{{ get_permalink() }}">{!! get_the_title() !!}</a>
