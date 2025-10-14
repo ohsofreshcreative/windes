@@ -35,7 +35,7 @@
 @if (have_posts())
 <div class="c-main pb-25 !mt-10 posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 	@while (have_posts()) @php(the_post())
-	{{-- Dobrą praktyką jest używanie pełnej ścieżki Sage do ładowania partiali --}}
+
 	@includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
 	@endwhile
 </div>

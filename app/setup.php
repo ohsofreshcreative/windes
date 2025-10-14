@@ -149,6 +149,18 @@ array_map(function ($file) {
 ));
 
 
+/*--- WOOCOMMERCE SIDEBAR ---*/
+
+add_action('widgets_init', function () {
+    register_sidebar([
+        'name'          => __('Sklep - Filtry', 'sage'),
+        'id'            => 'sidebar-shop-filters',
+        'before_widget' => '<section class="widget %1$s %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title font-bold mb-4">',
+        'after_title'   => '</h3>',
+    ]);
+});
 /**
  * Register the theme sidebars.
  *
