@@ -1298,6 +1298,11 @@ article.post:hover img {
 /*--- !WOOCOMMERCE ---*/
 
 /*--- !SHOP PAGE ---*/
+
+.woocommerce .products ul::after, .woocommerce .products ul::before, .woocommerce ul.products::after, .woocommerce ul.products::before {
+	display: none !important;
+}
+
 .woocommerce-shop {
   .products {
     .woocommerce-loop-category__title {

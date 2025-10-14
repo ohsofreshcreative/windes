@@ -154,13 +154,14 @@ array_map(function ($file) {
 add_action('widgets_init', function () {
     register_sidebar([
         'name'          => __('Sklep - Filtry', 'sage'),
-        'id'            => 'sidebar-shop-filters',
+        'id'            => 'sidebar-shop',
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h3 class="widget-title font-bold mb-4">',
-        'after_title'   => '</h3>',
+        'before_title'  => '<h5 class="widget-title font-bold mb-4">',
+        'after_title'   => '</h5>',
     ]);
 });
+
 /**
  * Register the theme sidebars.
  *
@@ -276,26 +277,23 @@ add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('gsap-st-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', ['gsap-cdn'], null, true);
 }, 1); // Ustawiamy priorytet na 1, aby wykonało się BARDZO wcześnie.
 
-/*-- CAREER MODAL ---*/
 
-add_action('wp_footer', function () {
-	$cf7_shortcode = '[contact-form-7 id="e0f7075" title="Wyślij CV"]';
+add_action('after_setup_theme', function () {
+    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+    remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+});
 
-	echo '
-    <!-- Modal Overlay -->
-    <div id="side-modal-overlay" class="fixed inset-0 bg-black bg-opacity-20 z-50 hidden transition-opacity duration-300 ease-in-out"></div>
 
-    <!-- Side Modal -->
-    <div id="side-modal" class="fixed top-0 right-0 h-full w-full max-w-lg bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
-        <div class="p-8 h-full overflow-y-auto">
-            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl">&times;</button>
-			<h5 class="m-header">Aplikuj na to stanowisko</h5>
-            <div>Wypełnij formularz i dołącz swoje CV – odezwiemy się, aby omówić szczegóły i odpowiedzieć na Twoje pytania.</div>
-            <!-- CF7 Form Container -->
-            <div class="modal-content mt-8">
-                ' . do_shortcode($cf7_shortcode) . '
-            </div>
-        </div>
-    </div>
-    ';
+/**
+ * ========================================================================
+ * WooCommerce: Wyłączenie sortowania i licznika wyników na stronach archiwów
+ * ========================================================================
+ * Ten kod usuwa standardowe akcje WooCommerce, aby uprościć wygląd sklepu.
+ */
+add_action('init', function () {
+    // Usuń akcję odpowiedzialną za wyświetlanie "Wyświetlanie X z Y wyników"
+    remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+
+    // Usuń akcję odpowiedzialną za wyświetlanie dropdownu do sortowania
+    remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 });

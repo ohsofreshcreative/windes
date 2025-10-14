@@ -20,22 +20,16 @@
 	@php(wp_body_open())
 
 	<div id="app">
-		<a class="sr-only focus:not-sr-only" href="#main">
-			{{ __('Skip to content', 'sage') }}
-		</a>
 
 		@include('sections.header')
 
-
 		@if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag()))
 
-		<main id="main" class="main c-main -spt">
-			@yield('content')
-		</main>
+		@yield('content')
 
 		@elseif (function_exists('is_product') && is_product())
 
-		<main id="main" class="main">
+		<main id="main" class="main -spt">
 			@yield('content')
 		</main>
 
@@ -46,12 +40,6 @@
 		</main>
 
 		@endif
-
-		<!--   @hasSection('sidebar')
-        <aside class="sidebar">
-          @yield('sidebar')
-        </aside>
-      @endif -->
 
 		@include('sections.footer')
 	</div>
