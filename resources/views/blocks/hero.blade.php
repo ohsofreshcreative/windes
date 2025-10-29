@@ -55,7 +55,7 @@ $sectionClass .= $flip ? ' order-flip' : '';
       action="{{ home_url('/') }}"
       class="mt-6 flex items-stretch gap-2 max-w-xl p-2 radius" style="border:1px solid rgba(255,255,255,0.5); background:rgba(255,255,255,0.15); backdrop-blur-lg;">
 
-  <label for="hero-search" class="sr-only">Szukaj produktów</label>
+  <label for="hero-search" class="sr-only text-white">Szukaj produktów</label>
   <input id="hero-search"
          type="search"
          name="s"
@@ -67,7 +67,7 @@ $sectionClass .= $flip ? ' order-flip' : '';
   <input type="hidden" name="post_type" value="produkty">
 
   <button type="submit"
-          class="rounded-xl px-5 py-3 font-semibold bg-white/90 hover:bg-white transition">
+          class="pointer-events-none rounded-xl px-5 py-3 font-semibold bg-white/90 hover:bg-white transition">
     Szukaj
   </button>
 </form>
