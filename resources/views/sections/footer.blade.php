@@ -9,7 +9,7 @@
 			@endfor
 		</div>
 	</div>
-		<img class="absolute left-0 bottom-0" src="/wp-content/uploads/2025/09/footer-img.svg" />
+	<img class="absolute left-0 bottom-0" src="/wp-content/uploads/2025/09/footer-img.svg" />
 	</div>
 
 	<div class="c-main flex flex-col md:flex-row justify-between gap-6 py-10 footer-bottom">
@@ -19,5 +19,12 @@
 		</p>
 	</div>
 	</div>
+
+	<svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+		<filter id="glass-blur" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox">
+			<feTurbulence type="fractalNoise" baseFrequency="0.02 0.02" numOctaves="1" result="turbulence" />
+			<feDisplacementMap in="SourceGraphic" in2="turbulence" scale="50" xChannelSelector="R" yChannelSelector="G" />
+		</filter>
+	</svg>
 
 </footer>

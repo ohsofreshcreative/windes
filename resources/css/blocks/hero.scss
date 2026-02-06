@@ -1,6 +1,10 @@
 .hero {
-  background-position: 70% !important;
-  :focus-visible {
-    outline: none;
-}
+	background-position: 70% !important;
+
+	:focus-visible {
+		outline: none;
+	}
+	input::placeholder {
+		color:#FFF;
+	}
 }
