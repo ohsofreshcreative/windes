@@ -1676,8 +1676,8 @@ article.post:hover img {
 }
 
 .glass-effect__bend {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
   filter: url(#glass-blur);
   z-index: 1;
 }
@@ -1686,7 +1686,6 @@ article.post:hover img {
   .glass-effect__bend {
     backdrop-filter: none;
     filter: none;
-    
     background-color: rgba(255, 255, 255, 0.2); 
   }
 }
