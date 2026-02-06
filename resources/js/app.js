@@ -13,6 +13,40 @@ import './swiper.js';
 // Importy bloków ACF (jeśli używasz)
 Object.values(import.meta.glob('./blocks/*.js', { eager: true }));
 
+/*--- AJAX SEARCH ---*/
+
+document.addEventListener('alpine:init', () => {
+  Alpine.data('productSearch', () => ({
+    searchQuery: '',
+    searchResults: [],
+
+    searchProducts() {
+      if (this.searchQuery.length < 3) {
+        this.searchResults = [];
+        return;
+      }
+
+      const params = new URLSearchParams({
+        action: 'search_products',
+        s: this.searchQuery,
+      });
+
+      fetch(`/wp-admin/admin-ajax.php?${params.toString()}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            this.searchResults = data.data;
+          } else {
+            this.searchResults = [];
+          }
+        })
+        .catch(error => {
+            console.error('Błąd wyszukiwania AJAX:', error);
+            this.searchResults = [];
+        });
+    },
+  }));
+});
 
 /*--- INICJALIZACJA BIBLIOTEK ---*/
 // Uruchom Alpine.js
