@@ -1676,9 +1676,19 @@ article.post:hover img {
 }
 
 .glass-effect__bend {
-  backdrop-filter: blur(3px); /* Zwiększamy rozmycie dla lepszego efektu */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   filter: url(#glass-blur);
   z-index: 1;
+}
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .glass-effect__bend {
+    backdrop-filter: none;
+    filter: none;
+    
+    background-color: rgba(255, 255, 255, 0.2); 
+  }
 }
 
 .glass-effect__face {
