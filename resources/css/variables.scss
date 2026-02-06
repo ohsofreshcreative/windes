@@ -1704,4 +1704,20 @@ article.post:hover img {
 .glass-effect__content {
 	position: relative;
 	z-index: 4;
+}.glass-effect__bend {
+  /* Style dla desktopu - pełen efekt */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  filter: url(#glass-blur); /* Używamy naszego jedynego, poprawnego filtra */
+  z-index: 1;
+}
+
+/* 
+  Media query dla urządzeń mobilnych (np. poniżej 1024px).
+  Na mniejszych ekranach wyłączamy kosztowny filtr SVG, zostawiając tylko blur.
+*/
+@media (max-width: 1024px) {
+  .glass-effect__bend {
+    filter: none; /* Wyłączamy zniekształcenie, aby oszczędzić zasoby */
+  }
 }
