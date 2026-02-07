@@ -52,7 +52,6 @@ $sectionClass .= $flip ? ' order-flip' : '';
 			@endif
 
 			<div x-data="productSearch()" @click.away="searchResults = []" class="relative w-full mt-6">
-				{{-- Formularz wyszukiwania (bez zmian) --}}
 				<x-glass-effect radius="200px">
 					<form role="search"
 						method="get"
@@ -60,15 +59,27 @@ $sectionClass .= $flip ? ' order-flip' : '';
 						class="flex items-stretch gap-2 p-2 relative">
 
 						<label for="hero-search" class="sr-only text-white">Szukaj produktów</label>
-						<input id="hero-search"
-							type="search"
-							name="s"
-							placeholder="Szukaj produktów…"
-							class="w-full rounded-xl px-4 py-3 text-white bg-transparent border-none focus:ring-0"
-							required
-							autocomplete="off"
-							x-model="searchQuery"
-							@input.debounce.300ms="searchProducts">
+<div class="relative flex-1">
+    <input id="hero-search"
+        type="search"
+        name="s"
+        placeholder="Szukaj produktów…"
+        class="w-full rounded-xl px-4 py-3 pr-10 text-white bg-transparent border-none focus:ring-0"
+        required
+        autocomplete="off"
+        x-model="searchQuery"
+        @input.debounce.300ms="searchProducts">
+
+    <button
+        type="button"
+        @click="searchQuery = ''; searchResults = []"
+        x-show="searchQuery.length"
+        class="absolute top-1/2 -translate-y-1/2 right-3 p-1 text-white hover:text-gray-300 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"></path>
+        </svg>
+    </button>
+</div>
 						<input type="hidden" name="post_type" value="product">
 
 						<button type="submit"
@@ -78,11 +89,8 @@ $sectionClass .= $flip ? ' order-flip' : '';
 					</form>
 				</x-glass-effect>
 
-				{{-- NOWA, POPRAWIONA LISTA WYNIKÓW --}}
-			 <div x-show="searchResults.length > 0" x-transition style="display: none;">
-                    {{-- Dodajemy klasę bg-white/95 dla "mlecznego" efektu --}}
-                    <x-glass-effect radius="32px" class="absolute top-full left-0 right-0 mt-2 z-50 !p-0 overflow-hidden bg-white/100">
-                        {{-- Dodajemy klasę .custom-scrollbar do listy --}}
+			 <div x-show="searchResults.length" x-transition style="display: none;">
+                    <x-glass-effect radius="32px" class="absolute top-full left-0 right-0 mt-2 z-50 !p-0 overflow-hidden ">
                         <ul class="max-h-[13.5rem] overflow-y-auto custom-scrollbar">
                             <template x-for="product in searchResults" :key="product.id">
                                 <li class="group border-b border-white/10 last:border-b-0">
