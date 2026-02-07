@@ -28,26 +28,19 @@ url({$imgUrl})
 
 @if($imgUrl)
 <section data-gsap-anim="section"
-	class="hero-sub relative h-[90vh] max-h-[940px] {{ $sectionClass }}"
+	class="hero-prod relative h-[90vh] max-h-[940px] {{ $sectionClass }}"
 	style="background-image: {{ $backgroundImage }}; background-size: cover; background-position: center;">
 
-	<div class="__wrapper c-main h-full pt-6 pb-26">
-		<div class="__content h-full flex flex-col justify-between w-full sm:w-1/2 relative z-10">
-			@if (function_exists('woocommerce_breadcrumb'))
+	<div class="__wrapper c-main h-full pt-2 pb-26">
+		<div class="__content h-full flex flex-col justify-between relative z-10">
 			@php
-			woocommerce_breadcrumb([
-			'delimiter' => '<span class="sep"> / </span>',
-			'wrap_before' => '<nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">',
-				'wrap_after' => '</nav>',
-			'before' => '',
-			'after' => '',
-			'home' => _x('Strona główna', 'breadcrumb', 'sage'),
-			]);
+			if (function_exists('woocommerce_breadcrumb')) {
+			woocommerce_breadcrumb();
+			}
 			@endphp
-			@endif
 
 			<div>
-				<h1 class="text-white text-h2 m-header">{{ get_the_title() }}</h1>
+				<h1 class="text-white text-h2 m-header w-full sm:w-1/2">{{ get_the_title() }}</h1>
 				@if(!empty($link['url']))
 				<div class="inline-buttons m-btn">
 					<a class="main-btn left-btn" href="">Zapytaj o produkt</a>

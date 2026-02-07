@@ -15,14 +15,12 @@
 
 <li class="{{ $classes }}">
 
-  {{-- Hook przed kategorią (np. otwarcie <a>) --}}
   @php do_action('woocommerce_before_subcategory', $category); @endphp
 
   <a href="{{ esc_url(get_term_link($category, 'product_cat')) }}"
      class="woocommerce-LoopCategory-link woocommerce-loop-category__link"
      aria-label="{{ esc_attr($category->name) }}">
 
-    {{-- Miniaturka kategorii --}}
     @php do_action('woocommerce_before_subcategory_title', $category); @endphp
 
     <h2 class="woocommerce-loop-category__title">

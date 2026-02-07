@@ -994,6 +994,28 @@ h6,
 	}
 }
 
+/*--- !BREADCRUMBS ---*/
+
+.woocommerce-breadcrumb {
+	a {
+		color: var(--body) !important;
+	}
+
+	.sep {
+		color: var(--color-primary) !important;
+	}
+}
+
+.hero-prod {
+	a {
+		color: #FFF !important;
+	}
+
+	.sep {
+		color: var(--color-primary) !important;
+	}
+}
+
 /*--- !BLOCKS ---*/
 
 /*--- !FORM ---*/
@@ -1609,7 +1631,7 @@ article.post:hover img {
 /*---- SM --*/
 @media only screen and (max-width: 640px) {
 	:root {
-		--smt: 56px;
+		/* --smt: 56px; */
 		--img-m: 240px;
 		--img-l: 240px;
 		--img-2xl: 320px;
@@ -1676,9 +1698,9 @@ article.post:hover img {
 }
 
 .glass-effect__bend {
-  backdrop-filter: blur(3px); 
-  filter: url(#glass-blur);
-  z-index: 1;
+	backdrop-filter: blur(3px);
+	filter: url(#glass-blur);
+	z-index: 1;
 }
 
 .glass-effect__face {
@@ -1699,20 +1721,20 @@ article.post:hover img {
 
 /* --- Custom Scrollbar --- */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
-	.custom-scrollbar::-webkit-scrollbar-thumb {
+.custom-scrollbar::-webkit-scrollbar-thumb {
 	background: rgba(255, 255, 255, 0.4);
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background-clip: content-box;
+	border-radius: 10px;
+	border: 2px solid transparent;
+	background-clip: content-box;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.6);
+	background: rgba(255, 255, 255, 0.6);
 }
