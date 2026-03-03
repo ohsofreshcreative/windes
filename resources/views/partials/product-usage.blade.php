@@ -18,13 +18,13 @@ $link_target = $link['target'] ?? '';
 	<div class="__wrapper c-main grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
 		@if($image)
-		<figure class="__img object-cover">
+		<figure class="__img object-cover !h-full">
 			{!! wp_get_attachment_image(
 			$image['ID'] ?? $image,
 			'large',
 			false,
 			[
-			'class' => '__img radius-img object-cover',
+			'class' => '__img radius-img object-cover !h-full',
 			'loading' => 'lazy',
 			'alt' => esc_attr($image['alt'] ?? ($header ?: get_the_title())),
 			'sizes' => '(min-width: 1024px) 800px, 100vw',

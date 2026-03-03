@@ -223,7 +223,7 @@ body {
 
 .img-m,
 .img-m img {
-	height: var(--img-m);
+	height: var(--img-m) !important;
 }
 
 .img-l {
@@ -1348,6 +1348,10 @@ article.post:hover img {
 .woocommerce .products ul,
 .woocommerce ul.products {
 	margin-top: 40px;
+}
+
+.woocommerce-pagination {
+	margin:40px 0;
 }
 
 /*--- !SINGLE PRODUCT ---*/

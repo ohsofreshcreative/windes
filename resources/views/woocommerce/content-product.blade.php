@@ -4,7 +4,7 @@ defined('ABSPATH') || exit;
 
 @php global $product; @endphp
 
-<li {!! wc_product_class('', $product) !!}>
+<li {!! wc_product_class('bg-red', $product) !!}>
   <figure class="woocommerce-product-figure relative">
     @if($product && $product->is_on_sale())
       <span class="onsale">Promocja!</span>
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 
     <a href="{{ get_permalink() }}">
       <img src="{{ get_the_post_thumbnail_url($product->get_id(), 'large') }}"
-           alt="{{ get_the_title() }}" class="img-m" />
+           alt="{{ get_the_title() }}" class="object-cover !h-48 w-full" />
     </a>
   </figure>
 
@@ -33,9 +33,9 @@ defined('ABSPATH') || exit;
     </div>
   @endif --}}
 
-  <h5 class="woocommerce-loop-product__title">
+  <h6 class="woocommerce-loop-product__title">
     <a href="{{ get_permalink() }}">{!! get_the_title() !!}</a>
-  </h5>
+  </h6>
 
   @php do_action('woocommerce_after_shop_loop_item_title') @endphp
 </li>

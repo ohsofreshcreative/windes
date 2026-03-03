@@ -9,7 +9,6 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     cors: true,
-    origin: 'http://windes.local:5173',
 
     hmr: {
       protocol: 'ws',

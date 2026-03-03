@@ -16,7 +16,7 @@
     </header>
 
     <div class="flex flex-wrap lg:flex-nowrap gap-x-8 mt-10">
-      <aside class="sidebar w-full h-max lg:w-1/4 order-first border border-primary">
+      <aside class="sidebar w-full h-max lg:w-1/4 order-first border border-primary p-6">
         @php dynamic_sidebar('sidebar-shop') @endphp
       </aside>
 
