@@ -1,10 +1,11 @@
 @php
 $sectionClass = '';
+$sectionClass .= $nomt ? ' !mt-0' : '';
 @endphp
 
 <!--- contact --->
 
-<section data-gsap-anim="section" class="contact bg-s-lighter relative -smt pt-30 pb-30 {{ $sectionClass }}">
+<section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="contact bg-s-lighter relative -smt pt-30 pb-30 {{ $sectionClass }} {{ $section_class }}">
 
 	<div class="__wrapper c-main relative z-2">
 

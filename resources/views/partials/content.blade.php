@@ -8,7 +8,7 @@
 		</div>
 		@endif
 
-		<h6 class="entry-title text-h5 mt-6 rounded p-">
+		<h6 class="entry-title text-h6 mt-6 rounded">
 			<a href="{{ get_permalink() }}">
 				{!! get_the_title() !!}
 			</a>

@@ -22,19 +22,19 @@ $mediaType = $g_duotitle['media_type'] ?? 'image';
 			<h3 data-gsap-element="header" class="">{{ $g_duotitle['header1'] }}<span class="block text-white">{{ $g_duotitle['header2'] }}</span></h3>
 		</div>
 
-		<div class="__col grid grid-cols-1 lg:grid-cols-[2fr_1.5fr] items-center gap-10 z-10" style="margin-top: -54px;">
+		<div class="__col grid grid-cols-1 lg:grid-cols-[2fr_1.5fr] items-center gap-10 z-10 mt-0 md:-mt-[54px]">
 
 			@if ($mediaType === 'image' && !empty($g_duotitle['image']))
 			<div data-gsap-element="{{ $flip ? 'img-right' : 'img-left' }}" class="__img bottom-0">
-				<img class="object-cover w-full img-xl radius-img" src="{{ $g_duotitle['image']['url'] }}" alt="{{ $g_duotitle['image']['alt'] ?? '' }}" loading="lazy" decoding="async">
+				<img class="object-cover w-full img-xl radius-img h-full" src="{{ $g_duotitle['image']['url'] }}" alt="{{ $g_duotitle['image']['alt'] ?? '' }}" loading="lazy" decoding="async">
 			</div>
 
 			@elseif ($mediaType === 'video' && !empty($g_duotitle['video_file']))
 			@php
 			$mime = $g_duotitle['video_file']['mime_type'] ?? 'video/mp4';
 			@endphp
-			<div data-gsap-element="{{ $flip ? 'img-right' : 'img-left' }}" class="__img __video aspect-video radius-img overflow-hidden">
-				<video class="w-full h-full object-cover" autoplay muted loop playsinline preload="metadata">
+			<div data-gsap-element="{{ $flip ? 'img-right' : 'img-left' }}" class="__img __video aspect-video radius-img overflow-hidden h-full pt-[52px]">
+				<video class="w-full h-full object-cover radius-img" autoplay muted loop playsinline preload="metadata">
 					<source src="{{ $g_duotitle['video_file']['url'] }}" type="{{ $mime }}">
 					Twoja przeglądarka nie wspiera elementu video.
 				</video>
