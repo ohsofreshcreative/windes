@@ -882,7 +882,7 @@ h6,
 }
 
 .underline-btn::after {
-	content: url('/wp-content/uploads/2025/06/btn-arrow.svg');
+	content: url('/wp-content/uploads/2026/03/arrow.svg');
 	height: 10px;
 	width: 10px;
 	margin-left: 8px;
@@ -894,7 +894,7 @@ h6,
 }
 
 .underline-btn:hover::after {
-	content: url('/wp-content/uploads/2025/05/arrow-right.svg');
+	content: url('/wp-content/uploads/2026/03/arrow.svg');
 	height: 10px;
 	width: 10px;
 	margin-left: 16px;
@@ -1322,6 +1322,19 @@ article.post:hover img {
 
 /*--- !SHOP PAGE ---*/
 
+.product-categories {
+	display: flex;
+	flex-direction: column;
+
+	.cat-item {
+		order: 2;
+	}
+
+	.cat-item.at-item-17 {
+		order: 1;
+	}
+}
+
 .woocommerce .products ul::after,
 .woocommerce .products ul::before,
 .woocommerce ul.products::after,
@@ -1351,7 +1364,7 @@ article.post:hover img {
 }
 
 .woocommerce-pagination {
-	margin:40px 0;
+	margin: 40px 0;
 }
 
 /*--- !SINGLE PRODUCT ---*/
