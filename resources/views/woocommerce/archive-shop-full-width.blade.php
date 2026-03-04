@@ -8,15 +8,15 @@
         woocommerce_breadcrumb();
       }
     @endphp
-    <header class="woocommerce-products-header grid grid-cols-1 md:grid-cols-2 gap-6">
+    <header class="woocommerce-products-header grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
       @if(apply_filters('woocommerce_show_page_title', true))
         <h1 class="woocommerce-products-header__title page-title text-h3">{!! woocommerce_page_title(false) !!}</h1>
       @endif
       @php do_action('woocommerce_archive_description') @endphp
     </header>
 
-    <div class="flex flex-wrap lg:flex-nowrap gap-x-8 mt-10">
-      <aside class="sidebar w-full h-max lg:w-1/4 order-first border border-primary p-6">
+    <div class="flex flex-wrap lg:flex-nowrap gap-x-8 mt-10 mb-24">
+      <aside class="sidebar w-full h-max lg:w-1/4 order-first border border-primary border-p p-6">
         @php dynamic_sidebar('sidebar-shop') @endphp
       </aside>
 
