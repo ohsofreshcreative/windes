@@ -4,10 +4,19 @@ use App\Walkers\MobileDropdownWalker;
 @endphp
 
 <header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-dark masthead fixed-top">
-
+	<div class="__topbar w-full py-2 px-12 mx-auto flex items-center justify-between">
+		<div class="__logo flex gap-4">
+			<p class="text-white">Jesteśmy oficjalnym dystrybutorem firmy </p>
+			<img src="/wp-content/uploads/2026/03/lomax.svg" />
+		</div>
+		<div class="__translate [&>div]:flex [&>div]:gap-2">
+			{!! do_shortcode('[gtranslate]') !!}
+		</div>
+	</div>
 	<!-- Desktop Header -->
 	<div class="items-center justify-between hidden h-full py-4 px-12 mx-auto md:flex">
-		<a class="brand shrink-0" href="{{ home_url('/') }}">
+
+		<a class="brand shrink-0" href="{{ home_url('/') }}">	
 			@if ($logo)
 			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12">
 			@else

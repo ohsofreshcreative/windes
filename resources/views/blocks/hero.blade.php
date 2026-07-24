@@ -8,7 +8,7 @@ $sectionClass .= $flip ? ' order-flip' : '';
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	class="hero bg-secondary relative -menu-pt min-h-[100svh] {{ $sectionClass }} {{ $section_class }}">
+	class="hero bg-secondary relative -menu-pt grid min-h-[80svh] {{ $sectionClass }} {{ $section_class }}">
 
 	@if (!empty($g_hero['use_video']) && !empty($g_hero['video']))
 	<video
@@ -59,27 +59,27 @@ $sectionClass .= $flip ? ' order-flip' : '';
 						class="flex items-stretch gap-2 p-2 relative">
 
 						<label for="hero-search" class="sr-only text-white">Szukaj produktów</label>
-<div class="relative flex-1">
-    <input id="hero-search"
-        type="search"
-        name="s"
-        placeholder="Szukaj produktów…"
-        class="w-full rounded-xl px-4 py-3 pr-10 text-white bg-transparent border-none focus:ring-0"
-        required
-        autocomplete="off"
-        x-model="searchQuery"
-        @input.debounce.300ms="searchProducts">
+						<div class="relative flex-1">
+							<input id="hero-search"
+								type="search"
+								name="s"
+								placeholder="Szukaj produktów…"
+								class="w-full rounded-xl px-4 py-3 pr-10 text-white bg-transparent border-none focus:ring-0"
+								required
+								autocomplete="off"
+								x-model="searchQuery"
+								@input.debounce.300ms="searchProducts">
 
-    <button
-        type="button"
-        @click="searchQuery = ''; searchResults = []"
-        x-show="searchQuery.length"
-        class="absolute top-1/2 -translate-y-1/2 right-3 p-1 text-white hover:text-gray-300 transition-colors">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"></path>
-        </svg>
-    </button>
-</div>
+							<button
+								type="button"
+								@click="searchQuery = ''; searchResults = []"
+								x-show="searchQuery.length"
+								class="absolute top-1/2 -translate-y-1/2 right-3 p-1 text-white hover:text-gray-300 transition-colors">
+								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"></path>
+								</svg>
+							</button>
+						</div>
 						<input type="hidden" name="post_type" value="product">
 
 						<button type="submit"
@@ -89,20 +89,20 @@ $sectionClass .= $flip ? ' order-flip' : '';
 					</form>
 				</x-glass-effect>
 
-			 <div x-show="searchResults.length" x-transition style="display: none;">
-                    <x-glass-effect radius="32px" class="absolute top-full left-0 right-0 mt-2 z-50 !p-0 overflow-hidden ">
-                        <ul class="max-h-[13.5rem] overflow-y-auto custom-scrollbar">
-                            <template x-for="product in searchResults" :key="product.id">
-                                <li class="group border-b border-white/10 last:border-b-0">
-                                    <a :href="product.url" class="flex items-center gap-3 p-3 hover:bg-black/20 transition-colors duration-150">
-                                        <img :src="product.image" :alt="product.title" class="w-10 h-10 object-cover rounded-md shrink-0">
-                                        <span class="font-semibold text-sm text-white" x-text="product.title"></span>
-                                    </a>
-                                </li>
-                            </template>
-                        </ul>
-                    </x-glass-effect>
-                </div>
+				<div x-show="searchResults.length" x-transition style="display: none;">
+					<x-glass-effect radius="32px" class="absolute top-full left-0 right-0 mt-2 z-50 !p-0 overflow-hidden ">
+						<ul class="max-h-[13.5rem] overflow-y-auto custom-scrollbar">
+							<template x-for="product in searchResults" :key="product.id">
+								<li class="group border-b border-white/10 last:border-b-0">
+									<a :href="product.url" class="flex items-center gap-3 p-3 hover:bg-black/20 transition-colors duration-150">
+										<img :src="product.image" :alt="product.title" class="w-10 h-10 object-cover rounded-md shrink-0">
+										<span class="font-semibold text-sm text-white" x-text="product.title"></span>
+									</a>
+								</li>
+							</template>
+						</ul>
+					</x-glass-effect>
+				</div>
 			</div>
 
 		</div>

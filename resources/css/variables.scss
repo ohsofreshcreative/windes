@@ -143,7 +143,7 @@ body {
 
 	--smt: 104px;
 	--spt: 104px;
-	--menu-height: 104px !important;
+	--menu-height: 120px !important;
 
 	--img-xs: 200px;
 	--img-s: 240px;
@@ -931,8 +931,12 @@ h6,
 
 /*--- !MENU  ---*/
 
+.masthead .__topbar {
+	background-color: #1A2026;
+}
+
 .fixed-top {
-	height: var(--menu-height);
+	/* height: var(--menu-height); */
 	position: fixed;
 	width: 100%;
 	max-width: 100%;
