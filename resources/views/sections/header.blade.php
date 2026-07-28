@@ -34,7 +34,7 @@ use App\Walkers\MobileDropdownWalker;
 			]) !!}
 		</nav>
 		@endif
-		<a class="small-btn" href="#">Zamów on-line</a>
+		<a class="small-btn" target="_blank" href="https://windes.pl/">Zamów on-line</a>
 	</div>
 
 	<!-- Mobile Header Bar -->
@@ -99,10 +99,9 @@ use App\Walkers\MobileDropdownWalker;
 				]) !!}
 			</nav>
 			@endif
-
 			<div class="mt-8">
-				<a href="/kontakt/" class="block w-full second-btn">
-					Umów konsultację
+				<a href="https://windes.pl/" target="_blank" class="block w-full second-btn">
+				Zamów on-line
 				</a>
 			</div>
 		</div>
