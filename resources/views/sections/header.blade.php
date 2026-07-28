@@ -4,7 +4,7 @@ use App\Walkers\MobileDropdownWalker;
 @endphp
 
 <header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-dark masthead fixed-top">
-	<div class="__topbar w-full py-2 px-12 mx-auto flex items-center justify-between">
+	<div class="__topbar w-full py-2 px-4 md:px-12 mx-auto flex items-center justify-between">
 		<div class="__logo  gap-4 hidden md:flex">
 			<p class="text-white">Jesteśmy oficjalnym dystrybutorem firmy </p>
 			<img src="/wp-content/uploads/2026/03/lomax.svg" />
