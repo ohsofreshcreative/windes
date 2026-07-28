@@ -9,7 +9,7 @@ use App\Walkers\MobileDropdownWalker;
 			<p class="text-white">Jesteśmy oficjalnym dystrybutorem firmy </p>
 			<img src="/wp-content/uploads/2026/03/lomax.svg" />
 		</div>
-		<div class="__translate [&>div]:flex [&>div]:gap-2">
+		<div class="__translate [&>div]:flex [&>div]:gap-2 ml-auto">
 			{!! do_shortcode('[gtranslate]') !!}
 		</div>
 	</div>
