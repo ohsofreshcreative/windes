@@ -18,7 +18,7 @@
 @endphp
 
 @if($header || $txt || $shortcode || $imgUrl)
-<section data-gsap-anim="section" class="contact bg-s-lighter relative -smt pt-30 pb-30 {{ $sectionClass }}">
+<section data-gsap-anim="section" id="kontakt" class="contact bg-s-lighter relative -smt pt-30 pb-30 {{ $sectionClass }}">
   <div class="__wrapper c-main relative z-2">
 
     <div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-10 z-10">

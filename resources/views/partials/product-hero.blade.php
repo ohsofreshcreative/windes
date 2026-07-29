@@ -31,7 +31,7 @@ url({$imgUrl})
 	class="hero-prod relative h-[90vh] max-h-[940px] {{ $sectionClass }}"
 	style="background-image: {{ $backgroundImage }}; background-size: cover; background-position: center;">
 
-	<div class="__wrapper c-main h-full pt-2 pb-26">
+	<div class="__wrapper c-main h-full pt-12 pb-26">
 		<div class="__content h-full flex flex-col justify-between relative z-10">
 			@php
 			if (function_exists('woocommerce_breadcrumb')) {
@@ -41,16 +41,17 @@ url({$imgUrl})
 
 			<div>
 				<h1 class="text-white text-h2 m-header w-full sm:w-1/2">{{ get_the_title() }}</h1>
-				@if(!empty($link['url']))
+
 				<div class="inline-buttons m-btn">
-					<a class="main-btn left-btn" href="">Zapytaj o produkt</a>
+					<a class="main-btn left-btn" href="#kontakt">Zapytaj o produkt</a>
+					@if(!empty($link['url']))
 					<a class="shop-btn"
 						href="{{ esc_url($link['url']) }}"
 						target="{{ esc_attr($link['target'] ?? '_self') }}">
 						{{ $link['title'] ?? 'Zobacz więcej' }}
 					</a>
+					@endif
 				</div>
-				@endif
 			</div>
 		</div>
 	</div>
