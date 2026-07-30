@@ -1,3 +1,47 @@
 .wysiwyg {
 
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-size: 36px !important;
+	}
+
+	ul,
+	ol {
+		padding-left: 1.5rem;
+		margin: 1rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	ul {
+		list-style: disc;
+
+		ul {
+			list-style: circle;
+			margin: 0.25rem 0;
+		}
+	}
+
+	ol {
+		list-style: decimal;
+
+		ol {
+			list-style: lower-alpha;
+			margin: 0.25rem 0;
+		}
+	}
+
+	li {
+		line-height: 1.6;
+		padding-left: 0.25rem;
+
+		&::marker {
+			color: currentColor;
+		}
+	}
 }
